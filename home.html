@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>AI Smart Complaint Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="home.css">
+    <title>AI Smart Complaint Management System</title>
 
-<script src="home.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
+
 <body>
 
-<!-- HEADER -->
+
+<!-- ===========================
+          HEADER
+=========================== -->
 
 <header class="header">
 
     <div class="logo">
 
-        <img src="images/skn logo.png" alt="College Logo">
-             <h3>SKN sinhgad college of engineering pandharpur</h3>
+        <img src="images/skn logo.png"
+             alt="College Logo">
+
+        <h3>
+            SKN sinhgad college of engineering pandharpur
+        </h3>
+
     </div>
+
 
     <nav>
 
         <ul>
 
-            <li><a href="#">Home</a></li>
+            <li class="active">
 
-        
+                <a href="#">
+                    Home
+                </a>
+
+            </li>
 
         </ul>
 
-    
-
-    </div>
+    </nav>
 
 </header>
 
-<!-- PAGE -->
+
+
+<!-- ===========================
+            PAGE
+=========================== -->
 
 <div class="container">
 
-    <h1>Student Complaint Portal</h1>
+
+    <h1>
+        Student Complaint Portal
+    </h1>
+
 
     <p class="subtitle">
 
@@ -57,66 +79,132 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </p>
 
-   
-    <!-- DASHBOARD -->
+
+
+    <!-- ===========================
+           DASHBOARD CARDS
+    ============================ -->
 
     <div class="cards">
+
+
+        <!-- REGISTER COMPLAINT -->
 
         <div class="card">
 
             <i class="fa-solid fa-file-circle-plus"></i>
 
-            <h2>Register Complaint</h2>
+            <h2>
+                Register Complaint
+            </h2>
 
-            <p>Submit a new complaint</p>
+            <p>
+                Submit a new complaint
+            </p>
 
-            <button>Open</button>
+            <button
+                type="button"
+                onclick="window.location.href='register.html'">
+
+                Open
+
+            </button>
 
         </div>
+
+
+
+        <!-- MY COMPLAINTS -->
 
         <div class="card">
 
             <i class="fa-solid fa-list-check"></i>
 
-            <h2>My Complaints</h2>
+            <h2>
+                My Complaints
+            </h2>
 
-            <p>View submitted complaints</p>
+            <p>
+                View submitted complaints
+            </p>
 
-            <button>Open</button>
+            <button
+                type="button"
+                onclick="window.location.href='complaints.html'">
+
+                Open
+
+            </button>
 
         </div>
+
+
+
+        <!-- COMPLAINT STATUS -->
 
         <div class="card">
 
             <i class="fa-solid fa-chart-line"></i>
 
-            <h2>Complaint Status</h2>
+            <h2>
+                Complaint Status
+            </h2>
 
-            <p>Track complaint progress</p>
+            <p>
+                Track complaint progress
+            </p>
 
-            <button>Open</button>
+            <button
+                type="button"
+                onclick="window.location.href='complaints.html'">
+
+                Open
+
+            </button>
 
         </div>
+
+
+
+        <!-- NOTIFICATIONS -->
 
         <div class="card">
 
             <i class="fa-solid fa-bell"></i>
 
-            <h2>Notifications</h2>
+            <h2>
+                Notifications
+            </h2>
 
-            <p>Latest updates</p>
+            <p>
+                Latest updates
+            </p>
 
-            <button>Open</button>
+            <button
+                type="button"
+                onclick="showNotifications()">
+
+                Open
+
+            </button>
 
         </div>
 
+
     </div>
 
-    <!-- RECENT COMPLAINTS -->
+
+
+    <!-- ===========================
+          RECENT COMPLAINTS
+    ============================ -->
 
     <div class="table-box">
 
-        <h2>Recent Complaints</h2>
+        <h2>
+            Recent Complaints
+        </h2>
+
 
         <table>
 
@@ -124,55 +212,30 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <tr>
 
-                    <th>Complaint ID</th>
+                    <th>
+                        Complaint ID
+                    </th>
 
-                    <th>Category</th>
+                    <th>
+                        Category
+                    </th>
 
-                    <th>Status</th>
+                    <th>
+                        Status
+                    </th>
 
-                    <th>Date</th>
+                    <th>
+                        Date
+                    </th>
 
                 </tr>
 
             </thead>
 
-            <tbody>
 
-                <tr>
+            <tbody id="recentComplaints">
 
-                    <td>CMP001</td>
-
-                    <td>Hostel</td>
-
-                    <td><span class="pending">Pending</span></td>
-
-                    <td>16 Jul 2026</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>CMP002</td>
-
-                    <td>Library</td>
-
-                    <td><span class="progress">In Progress</span></td>
-
-                    <td>15 Jul 2026</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>CMP003</td>
-
-                    <td>Classroom</td>
-
-                    <td><span class="resolved">Resolved</span></td>
-
-                    <td>12 Jul 2026</td>
-
-                </tr>
+                <!-- JavaScript will add complaints here -->
 
             </tbody>
 
@@ -180,11 +243,32 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
+
 </div>
+
+
+
+<!-- ===========================
+            FOOTER
+=========================== -->
 
 <footer>
 
+    <p>
+        AI Smart Complaint Management System
+    </p>
+
 </footer>
 
+
+
+<!-- ===========================
+         JAVASCRIPT
+=========================== -->
+
+<script src="home.js"></script>
+
+
 </body>
+
 </html>

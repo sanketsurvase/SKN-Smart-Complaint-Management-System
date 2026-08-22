@@ -1,106 +1,187 @@
 // ==============================
 // AI SMART COMPLAINT MANAGEMENT
-// script.js
+// home.js
 // ==============================
 
-// Wait until page loads
+
+// Wait until the page is fully loaded
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ---------------------------
-    // Welcome Message
-    // ---------------------------
+
+    // ===========================
+    // STUDENT INFORMATION
+    // ===========================
+
     const studentName = "Mr. Sanket Survase";
 
     console.log("Welcome " + studentName);
 
-    // ---------------------------
-    // Open Buttons
-    // ---------------------------
+
+    // ===========================
+    // OPEN DASHBOARD BUTTONS
+    // ===========================
+
     const buttons = document.querySelectorAll(".card button");
 
-    buttons.forEach(function(button){
 
-        button.addEventListener("click", function(){
+    buttons.forEach(function (button) {
 
-            let title = this.parentElement.querySelector("h2").innerText;
 
-            switch(title){
+        button.addEventListener("click", function () {
+
+
+            // Get the title of the selected card
+
+            const title =
+                this.parentElement.querySelector("h2").innerText;
+
+
+            // ===========================
+            // BUTTON ACTIONS
+            // ===========================
+
+            switch (title) {
+
+
+                // -------------------------
+                // REGISTER COMPLAINT
+                // -------------------------
 
                 case "Register Complaint":
-                    alert("Opening Register Complaint Page...");
-                    // window.location.href="register.html";
+
+                    window.location.href = "register.html";
+
                     break;
+
+
+
+                // -------------------------
+                // MY COMPLAINTS
+                // -------------------------
 
                 case "My Complaints":
-                    alert("Opening My Complaints...");
-                    // window.location.href="mycomplaints.html";
+
+                    alert("My Complaints page is coming soon.");
+
                     break;
+
+
+
+                // -------------------------
+                // COMPLAINT STATUS
+                // -------------------------
 
                 case "Complaint Status":
-                    alert("Opening Complaint Status...");
-                    // window.location.href="status.html";
+
+                    alert("Complaint Status page is coming soon.");
+
                     break;
+
+
+
+                // -------------------------
+                // NOTIFICATIONS
+                // -------------------------
 
                 case "Notifications":
-                    alert("Opening Notifications...");
-                    // window.location.href="notifications.html";
+
+                    alert("Notifications page is coming soon.");
+
                     break;
 
+
+
+                // -------------------------
+                // DEFAULT
+                // -------------------------
+
                 default:
-                    alert("Feature Coming Soon");
+
+                    alert("Feature Coming Soon.");
+
             }
 
         });
 
     });
 
-    // ---------------------------
-    // Notification Icon
-    // ---------------------------
-    const bell = document.querySelector(".fa-bell");
 
-    if(bell){
 
-        bell.addEventListener("click",function(){
+    // ===========================
+    // NOTIFICATION ICON
+    // ===========================
+
+    const bell =
+        document.querySelector(".fa-bell");
+
+
+    if (bell) {
+
+
+        bell.addEventListener("click", function () {
+
 
             alert("No New Notifications");
 
+
         });
 
     }
 
-    // ---------------------------
-    // Message Icon
-    // ---------------------------
-    const message = document.querySelector(".fa-message");
 
-    if(message){
 
-        message.addEventListener("click",function(){
+    // ===========================
+    // MESSAGE ICON
+    // ===========================
+
+    const message =
+        document.querySelector(".fa-message");
+
+
+    if (message) {
+
+
+        message.addEventListener("click", function () {
+
 
             alert("No New Messages");
 
+
         });
 
     }
 
-    // ---------------------------
-    // Profile Circle
-    // ---------------------------
-    const profile = document.querySelector(".user");
 
-    if(profile){
 
-        profile.addEventListener("click",function(){
+    // ===========================
+    // PROFILE CIRCLE
+    // ===========================
+
+    const profile =
+        document.querySelector(".user");
+
+
+    if (profile) {
+
+
+        profile.addEventListener("click", function () {
+
 
             alert(
+
                 "Student Profile\n\n" +
+
                 "Name : " + studentName +
+
                 "\nDepartment : Computer Science & Engineering"
+
             );
+
 
         });
 
     }
+
 
 });
