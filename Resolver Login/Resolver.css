@@ -1,0 +1,479 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+    background: #ffffff;
+
+    padding: 14px 40px;
+
+    border-bottom: 4px solid #163a63;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.college {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.college img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+.college h2 {
+    color: #163a63;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.college p {
+    margin-top: 3px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container {
+    min-height: calc(100vh - 170px);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+/* ==========================================
+   LOGIN BOX
+========================================== */
+
+.auth-box {
+    width: 100%;
+    max-width: 500px;
+
+    background: #ffffff;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================
+   AUTH ICON
+========================================== */
+
+.auth-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 18px;
+
+    background: #163a63;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.auth-box h1 {
+    color: #163a63;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #777;
+
+    font-size: 14px;
+
+    margin: 7px 0 25px;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+form {
+    width: 100%;
+}
+
+
+/* ==========================================
+   INPUT BOX
+========================================== */
+
+.input-box {
+    text-align: left;
+
+    margin-bottom: 19px;
+}
+
+.input-box label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #333;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   INPUT
+========================================== */
+
+.input-box input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #c9cdd2;
+    border-radius: 5px;
+
+    background: white;
+
+    color: #333;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.input-box input:focus {
+    border-color: #163a63;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 58, 99, 0.08);
+}
+
+.input-box input::placeholder {
+    color: #999;
+}
+
+
+/* ==========================================
+   PASSWORD BOX
+========================================== */
+
+.password-box {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    border: 1px solid #c9cdd2;
+    border-radius: 5px;
+
+    background: white;
+
+    overflow: hidden;
+
+    transition: 0.2s;
+}
+
+.password-box:focus-within {
+    border-color: #163a63;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 58, 99, 0.08);
+}
+
+.password-box input {
+    flex: 1;
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: none;
+
+    border-radius: 0;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+.password-box input:focus {
+    border: none;
+
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   PASSWORD EYE BUTTON
+========================================== */
+
+.password-box button {
+    width: 50px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    background: white;
+
+    color: #163a63;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.password-box button:hover {
+    background: #f4f6f9;
+}
+
+
+/* ==========================================
+   FORGOT PASSWORD
+========================================== */
+
+.forgot-password-box {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: -8px;
+    margin-bottom: 18px;
+}
+
+.forgot-password-box a {
+    color: #163a63;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.forgot-password-box a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message {
+    min-height: 22px;
+
+    margin: 5px 0 12px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+.message.error,
+.error {
+    color: #c62828;
+}
+
+.message.success,
+.success {
+    color: #198754;
+}
+
+
+/* ==========================================
+   LOGIN BUTTON
+========================================== */
+
+.main-btn {
+    width: 100%;
+
+    padding: 13px 20px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #163a63;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: #102c4c;
+}
+
+.main-btn:disabled {
+    background: #8492a1;
+
+    cursor: not-allowed;
+}
+
+.main-btn i {
+    margin-right: 5px;
+}
+
+
+/* ==========================================
+   AUTHORIZED INFORMATION
+========================================== */
+
+.authorized-info {
+    margin-top: 22px;
+
+    padding: 12px 15px;
+
+    background: #f4f8fc;
+
+    border: 1px solid #dbe5ef;
+    border-radius: 5px;
+
+    color: #555;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+}
+
+.authorized-info i {
+    color: #163a63;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    background: white;
+
+    border-top: 1px solid #ddd;
+
+    padding: 18px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 15px;
+    }
+
+    .college {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .college h2 {
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+    .auth-box {
+        padding: 25px 20px;
+    }
+
+    .auth-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 27px;
+    }
+
+    .auth-box h1 {
+        font-size: 23px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .authorized-info {
+        font-size: 11px;
+    }
+}

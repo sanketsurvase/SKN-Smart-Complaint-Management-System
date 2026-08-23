@@ -1,0 +1,18 @@
+// firebase.js
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCQFmDJ9jhbMnID_MxiR0z-bBUjsehRQhw",
+  authDomain: "smart-complaint-system-ca5fd.firebaseapp.com",
+  projectId: "smart-complaint-system-ca5fd",
+  storageBucket: "smart-complaint-system-ca5fd.firebasestorage.app",
+  messagingSenderId: "128793473217",
+  appId: "1:128793473217:web:0d662396adb995cba92440",
+  measurementId: "G-SRD822XEM0"
+};
+
+const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);

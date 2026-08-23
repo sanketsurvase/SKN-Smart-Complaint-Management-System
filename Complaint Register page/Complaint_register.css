@@ -1,0 +1,768 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+    background: white;
+    padding: 14px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 4px solid #163a63;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.college {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.college img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.college h2 {
+    color: #163a63;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.college p {
+    margin-top: 3px;
+    color: #777;
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   HOME BUTTON
+========================================== */
+
+.home-btn {
+    background: #163a63;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 11px 20px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.home-btn:hover {
+    background: #102c4c;
+}
+
+.home-btn i {
+    margin-right: 5px;
+}
+
+
+/* ==========================================
+   PAGE TITLE
+========================================== */
+
+.page-title {
+    background: #163a63;
+    color: white;
+
+    padding: 28px 5%;
+
+    text-align: center;
+}
+
+.page-title h1 {
+    font-size: 28px;
+}
+
+.page-title p {
+    margin-top: 6px;
+
+    color: #e7edf4;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container {
+    width: 94%;
+    max-width: 850px;
+
+    margin: 35px auto;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.form-box {
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.form-section-title {
+    color: #163a63;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    padding-bottom: 15px;
+
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #e2e5e9;
+}
+
+.form-section-title i {
+    margin-right: 7px;
+}
+
+
+/* ==========================================
+   INPUT
+========================================== */
+
+.input-box {
+    margin-bottom: 21px;
+}
+
+.input-box label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #333;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.input-box label > span {
+    color: #dc3545;
+}
+
+.input-box input,
+.input-box select,
+.input-box textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: white;
+    color: #333;
+
+    border: 1px solid #c9cdd2;
+    border-radius: 5px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.input-box select {
+    cursor: pointer;
+}
+
+.input-box textarea {
+    resize: vertical;
+
+    min-height: 140px;
+
+    line-height: 1.6;
+}
+
+.input-box input:focus,
+.input-box select:focus,
+.input-box textarea:focus {
+    border-color: #163a63;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 58, 99, 0.08);
+}
+
+.input-box input::placeholder,
+.input-box textarea::placeholder {
+    color: #999;
+}
+
+.input-box small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #777;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.input-box .optional {
+    display: inline;
+
+    margin-left: 3px;
+
+    color: #777;
+
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.input-box input[type="file"] {
+    padding: 10px;
+
+    background: #f8f9fa;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   PRIVACY
+========================================== */
+
+.privacy-box {
+    margin-top: 25px;
+
+    padding: 17px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    background: #f4f8fc;
+
+    border: 1px solid #dbe5ef;
+    border-radius: 6px;
+}
+
+.privacy-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #163a63;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 17px;
+}
+
+.privacy-box h3 {
+    color: #163a63;
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+.privacy-box p {
+    color: #666;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.buttons {
+    margin-top: 28px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+.reset-btn {
+    padding: 12px 22px;
+
+    border: 1px solid #aaa;
+    border-radius: 5px;
+
+    background: white;
+
+    color: #555;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.reset-btn:hover {
+    background: #f0f0f0;
+}
+
+.submit-btn {
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #163a63;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.submit-btn:hover {
+    background: #102c4c;
+}
+
+.submit-btn:disabled {
+    background: #8492a1;
+
+    cursor: not-allowed;
+}
+
+.submit-btn i,
+.reset-btn i {
+    margin-right: 5px;
+}
+
+
+/* ==========================================
+   SUCCESS BOX
+========================================== */
+
+.success-box {
+    display: none;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.06);
+
+    animation:
+        successBoxFade 0.35s ease;
+}
+
+@keyframes successBoxFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-box h2 {
+    margin-top: 20px;
+
+    color: #163a63;
+
+    font-size: 25px;
+}
+
+.success-message {
+    margin-top: 8px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   GREEN TICK
+========================================== */
+
+.tick-circle {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #198754;
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 36px;
+
+    transform: scale(0);
+
+    opacity: 0;
+}
+
+.tick-circle.tick-animation {
+    animation:
+        tickAnimation 0.55s ease forwards;
+}
+
+@keyframes tickAnimation {
+
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    65% {
+        transform: scale(1.18);
+        opacity: 1;
+    }
+
+    85% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================
+   TRACKING SECTION
+========================================== */
+
+.tracking-section {
+    margin: 28px auto 20px;
+
+    padding: 24px;
+
+    max-width: 500px;
+
+    background: #f4f8fc;
+
+    border: 1px solid #d7e3ee;
+    border-radius: 8px;
+
+    opacity: 0;
+
+    transform: translateY(18px);
+}
+
+.tracking-section.tracking-show {
+    animation:
+        trackingAnimation 0.5s ease forwards;
+}
+
+@keyframes trackingAnimation {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.tracking-title {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+.complaint-id {
+    color: #163a63;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin: 5px 0;
+
+    word-break: break-word;
+}
+
+.tracking-help {
+    margin-top: 9px;
+
+    color: #666;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.save-message {
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.save-message i {
+    color: #163a63;
+
+    margin-right: 4px;
+}
+
+
+/* ==========================================
+   SUCCESS BUTTONS
+========================================== */
+
+.success-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.copy-btn,
+.another-btn,
+.back-btn {
+    padding: 11px 17px;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.copy-btn {
+    display: none;
+
+    background: #198754;
+
+    color: white;
+
+    border: none;
+}
+
+.copy-btn:hover {
+    background: #146c43;
+}
+
+.another-btn {
+    background: #163a63;
+
+    color: white;
+
+    border: none;
+}
+
+.another-btn:hover {
+    background: #102c4c;
+}
+
+.back-btn {
+    background: white;
+
+    color: #163a63;
+
+    border: 1px solid #163a63;
+}
+
+.back-btn:hover {
+    background: #f1f5f9;
+}
+
+.copy-btn i,
+.another-btn i,
+.back-btn i {
+    margin-right: 5px;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    margin-top: 40px;
+
+    padding: 18px;
+
+    background: white;
+
+    border-top: 1px solid #ddd;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width: 700px) {
+
+    .header {
+        padding: 15px;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+    }
+
+    .college {
+        flex-direction: column;
+    }
+
+    .college h2 {
+        font-size: 17px;
+    }
+
+    .page-title {
+        padding: 23px 15px;
+    }
+
+    .page-title h1 {
+        font-size: 24px;
+    }
+
+    .container {
+        width: 94%;
+
+        margin: 25px auto;
+    }
+
+    .form-box {
+        padding: 24px 18px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .reset-btn,
+    .submit-btn {
+        width: 100%;
+    }
+
+    .privacy-box {
+        flex-direction: column;
+    }
+
+    .success-box {
+        padding: 35px 18px;
+    }
+
+    .tick-circle {
+        width: 75px;
+        height: 75px;
+
+        font-size: 31px;
+    }
+
+    .success-box h2 {
+        font-size: 21px;
+    }
+
+    .complaint-id {
+        font-size: 20px;
+
+        letter-spacing: 0;
+    }
+
+    .success-buttons {
+        flex-direction: column;
+    }
+
+    .copy-btn,
+    .another-btn,
+    .back-btn {
+        width: 100%;
+    }
+}

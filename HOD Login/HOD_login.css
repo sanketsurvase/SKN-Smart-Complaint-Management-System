@@ -1,0 +1,434 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+    background: white;
+
+    padding: 15px 40px;
+
+    border-bottom: 4px solid #163a63;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.college {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.college img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+.college h2 {
+    font-size: 20px;
+
+    color: #163a63;
+}
+
+.college p {
+    margin-top: 3px;
+
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container {
+    min-height: calc(100vh - 170px);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+/* ==========================================
+   AUTH BOX
+========================================== */
+
+.auth-box {
+    width: 100%;
+
+    max-width: 440px;
+
+    background: white;
+
+    padding: 35px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   AUTH ICON
+========================================== */
+
+.auth-icon {
+    width: 80px;
+    height: 80px;
+
+    background: #163a63;
+
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 18px;
+
+    font-size: 34px;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.auth-box h1 {
+    color: #163a63;
+}
+
+.subtitle {
+    color: #777;
+
+    margin: 5px 0 25px;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   INPUT BOX
+========================================== */
+
+.input-box {
+    margin-bottom: 18px;
+
+    text-align: left;
+}
+
+.input-box label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.input-box input {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.input-box input:focus {
+    border-color: #163a63;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 58, 99, 0.08);
+}
+
+
+/* ==========================================
+   PASSWORD BOX
+========================================== */
+
+.password-box {
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    background: white;
+}
+
+.password-box:focus-within {
+    border-color: #163a63;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 58, 99, 0.08);
+}
+
+.password-box input {
+    flex: 1;
+
+    border: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+.password-box input:focus {
+    border: none;
+
+    box-shadow: none;
+}
+
+.password-box button {
+    width: 50px;
+    height: 42px;
+
+    border: none;
+
+    background: white;
+
+    color: #163a63;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.password-box button:hover {
+    background: #f4f6f9;
+}
+
+
+/* ==========================================
+   FORGOT PASSWORD
+========================================== */
+
+.forgot-password-box {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: -8px;
+
+    margin-bottom: 18px;
+}
+
+.forgot-password-box a {
+    color: #163a63;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.forgot-password-box a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message {
+    min-height: 20px;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
+
+    text-align: left;
+}
+
+.message.error,
+.error {
+    color: #c62828;
+}
+
+.message.success,
+.success {
+    color: #198754;
+}
+
+
+/* ==========================================
+   LOGIN BUTTON
+========================================== */
+
+.main-btn {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #163a63;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: #102c4c;
+}
+
+.main-btn:disabled {
+    background: #8996a3;
+
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   AUTHORIZED INFORMATION
+========================================== */
+
+.authorized-info {
+    margin-top: 22px;
+
+    padding: 12px 15px;
+
+    background: #f4f8fc;
+
+    border: 1px solid #dbe5ef;
+
+    border-radius: 5px;
+
+    color: #555;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+}
+
+.authorized-info i {
+    color: #163a63;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    text-align: center;
+
+    padding: 18px;
+
+    background: white;
+
+    border-top: 1px solid #ddd;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width: 600px) {
+
+    .header {
+        padding: 15px;
+    }
+
+    .college {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .college h2 {
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+    .auth-box {
+        padding: 25px 20px;
+    }
+
+    .auth-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 29px;
+    }
+
+    .forgot-password-box {
+        margin-bottom: 16px;
+    }
+
+    .authorized-info {
+        font-size: 11px;
+    }
+}

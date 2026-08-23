@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HOD Login</title>
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="HOD_login.css">
+
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     HEADER
+=========================================== -->
+
+<header class="header">
+
+    <div class="college">
+
+        <img src="../Images/skn logo.png"
+             alt="College Logo">
+
+        <div>
+
+            <h2>
+                SKN Sinhgad College of Engineering, Pandharpur
+            </h2>
+
+            <p>
+                Smart Complaint Management System
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==========================================
+     MAIN CONTENT
+=========================================== -->
+
+<main class="container">
+
+
+    <div class="auth-box">
+
+
+        <!-- ICON -->
+
+        <div class="auth-icon">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1>
+            HOD Access
+        </h1>
+
+
+        <!-- SUBTITLE -->
+
+        <p class="subtitle">
+            Authorized HOD Login
+        </p>
+
+
+
+        <!-- ======================================
+             LOGIN FORM
+        ======================================= -->
+
+        <form id="loginForm">
+
+
+            <!-- EMAIL -->
+
+            <div class="input-box">
+
+                <label for="loginEmail">
+                    HOD Email
+                </label>
+
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="example@sknscoe.ac.in"
+                    autocomplete="email"
+                    required>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-box">
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+
+                <div class="password-box">
+
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter Password"
+                        autocomplete="current-password"
+                        required>
+
+
+                    <!-- SHOW / HIDE PASSWORD -->
+
+                    <button
+                        type="button"
+                        id="toggleLoginPassword"
+                        aria-label="Show or hide password">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 FORGOT PASSWORD
+            ======================================= -->
+
+            <div class="forgot-password-box">
+
+                <a href="#"
+                   id="forgotPassword">
+
+                    Forgot Password?
+
+                </a>
+
+            </div>
+
+
+
+            <!-- LOGIN MESSAGE -->
+
+            <p
+                id="loginMessage"
+                class="message">
+            </p>
+
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="main-btn"
+                id="loginButton">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- ======================================
+             SECURITY INFORMATION
+        ======================================= -->
+
+        <div class="authorized-info">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <span>
+                Access is restricted to authorized HODs only.
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ==========================================
+     FOOTER
+=========================================== -->
+
+<footer>
+
+    © 2026 Smart Complaint Management System |
+    SKN Sinhgad College of Engineering, Pandharpur
+
+</footer>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script
+    type="module"
+    src="HOD_login.js">
+</script>
+
+
+</body>
+
+</html>
