@@ -1,0 +1,463 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+    background: #ffffff;
+    padding: 14px 40px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 4px solid #163a63;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.college {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.college img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.college h2 {
+    color: #163a63;
+    font-size: 20px;
+}
+
+.college p {
+    margin-top: 3px;
+    color: #777;
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   PAGE TITLE
+========================================== */
+
+.page-title {
+    background: #163a63;
+    color: #ffffff;
+
+    padding: 28px 5%;
+
+    text-align: center;
+}
+
+.page-title h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.page-title p {
+    margin-top: 6px;
+    color: #e5ebf2;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container {
+    width: 92%;
+    max-width: 1000px;
+
+    margin: 35px auto;
+
+    flex: 1;
+}
+
+
+/* ==========================================
+   STATUS BOX
+========================================== */
+
+.status-box {
+    background: #ffffff;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    padding: 28px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ==========================================
+   SEARCH BOX
+========================================== */
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #222;
+}
+
+
+/* ==========================================
+   SEARCH ROW
+========================================== */
+
+.search-row {
+    display: flex;
+    gap: 12px;
+}
+
+.search-row input {
+    flex: 1;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    background: #ffffff;
+}
+
+.search-row input:focus {
+    border-color: #163a63;
+
+    box-shadow: 0 0 0 2px rgba(22, 58, 99, 0.08);
+}
+
+.search-row input::placeholder {
+    color: #999;
+}
+
+
+/* ==========================================
+   CHECK STATUS BUTTON
+========================================== */
+
+#checkStatusButton {
+    background: #163a63;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 6px;
+
+    padding: 12px 22px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: 0.2s;
+}
+
+#checkStatusButton:hover {
+    background: #102c4c;
+}
+
+#checkStatusButton:disabled {
+    background: #8c9bab;
+    cursor: not-allowed;
+}
+
+#checkStatusButton i {
+    margin-right: 5px;
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message {
+    margin-top: 15px;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.message:empty {
+    display: none;
+}
+
+
+/* ==========================================
+   ERROR MESSAGE
+========================================== */
+
+.message.error {
+    color: #dc3545;
+
+    background: #fbe9eb;
+
+    border: 1px solid #f1c2c7;
+    border-radius: 5px;
+
+    padding: 11px 14px;
+}
+
+
+/* ==========================================
+   SUCCESS MESSAGE
+========================================== */
+
+.message.success {
+    color: #198754;
+
+    background: #e8f7ef;
+
+    border: 1px solid #badbcc;
+    border-radius: 5px;
+
+    padding: 11px 14px;
+}
+
+
+/* ==========================================
+   COMPLAINT RESULT
+========================================== */
+
+.complaint-result {
+    margin-top: 25px;
+}
+
+
+/* ==========================================
+   STATUS RESULT BOX
+========================================== */
+
+.status-result {
+    background: #f8f9fa;
+
+    border: 1px solid #e0e3e6;
+    border-radius: 7px;
+
+    padding: 28px;
+
+    text-align: center;
+
+    animation: resultFade 0.25s ease;
+}
+
+
+/* ==========================================
+   STATUS LABEL
+========================================== */
+
+.status-label {
+    color: #555;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 14px;
+}
+
+
+/* ==========================================
+   STATUS BADGE
+========================================== */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 160px;
+
+    padding: 10px 20px;
+
+    border-radius: 22px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   PENDING STATUS
+========================================== */
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+
+    border: 1px solid #ffe69c;
+}
+
+
+/* ==========================================
+   IN PROGRESS STATUS
+========================================== */
+
+.status-progress {
+    background: #cff4fc;
+    color: #055160;
+
+    border: 1px solid #9eeaf9;
+}
+
+
+/* ==========================================
+   COMPLETED STATUS
+========================================== */
+
+.status-completed {
+    background: #d1e7dd;
+    color: #0f5132;
+
+    border: 1px solid #a3cfbb;
+}
+
+
+/* ==========================================
+   RESULT ANIMATION
+========================================== */
+
+@keyframes resultFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    margin-top: 40px;
+
+    background: #ffffff;
+
+    border-top: 1px solid #ddd;
+
+    padding: 18px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 15px;
+    }
+
+    .college {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .college img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .college h2 {
+        font-size: 17px;
+    }
+
+    .college p {
+        font-size: 12px;
+    }
+
+    .page-title {
+        padding: 25px 15px;
+    }
+
+    .page-title h1 {
+        font-size: 24px;
+    }
+
+    .page-title p {
+        font-size: 13px;
+    }
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .status-box {
+        padding: 20px;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    #checkStatusButton {
+        width: 100%;
+    }
+
+    .status-result {
+        padding: 22px 15px;
+    }
+
+    .status {
+        width: 100%;
+        min-width: 0;
+    }
+
+}

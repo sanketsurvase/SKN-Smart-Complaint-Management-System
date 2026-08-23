@@ -15,6 +15,7 @@ from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import {
     getAuth,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     signOut,
     setPersistence,
     browserLocalPersistence
@@ -66,8 +67,10 @@ const firebaseConfig = {
 const app =
     initializeApp(firebaseConfig);
 
+
 const auth =
     getAuth(app);
+
 
 const database =
     getDatabase(app);
@@ -165,7 +168,9 @@ if (toggleLoginPassword) {
 
                 toggleLoginPassword.innerHTML =
                     '<i class="fa-solid fa-eye"></i>';
+
             }
+
         }
     );
 }
@@ -174,25 +179,219 @@ if (toggleLoginPassword) {
 // =====================================================
 // FORGOT PASSWORD
 // =====================================================
-// We will connect this to Firebase Password Reset later.
-// =====================================================
 
 if (forgotPassword) {
 
     forgotPassword.addEventListener(
         "click",
 
-        function (event) {
+        async function (event) {
 
             event.preventDefault();
 
+
+            // =================================================
+            // GET HOD EMAIL
+            // =================================================
+
+            const email =
+                loginEmail.value
+                    .trim()
+                    .toLowerCase();
+
+
+            // =================================================
+            // CLEAR OLD MESSAGE
+            // =================================================
 
             loginMessage.className =
                 "message";
 
 
             loginMessage.textContent =
-                "Forgot Password feature will be available soon.";
+                "";
+
+
+            // =================================================
+            // EMPTY EMAIL CHECK
+            // =================================================
+
+            if (
+                email === ""
+            ) {
+
+                loginMessage.className =
+                    "message error";
+
+
+                loginMessage.textContent =
+                    "Please enter your registered HOD email first.";
+
+
+                loginEmail.focus();
+
+
+                return;
+            }
+
+
+            // =================================================
+            // OFFICIAL COLLEGE EMAIL CHECK
+            // =================================================
+
+            if (
+                !email.endsWith(
+                    "@sknscoe.ac.in"
+                )
+            ) {
+
+                loginMessage.className =
+                    "message error";
+
+
+                loginMessage.textContent =
+                    "Please enter your official @sknscoe.ac.in HOD email.";
+
+
+                loginEmail.focus();
+
+
+                return;
+            }
+
+
+            // =================================================
+            // DISABLE FORGOT PASSWORD LINK
+            // =================================================
+
+            forgotPassword.style.pointerEvents =
+                "none";
+
+
+            forgotPassword.style.opacity =
+                "0.6";
+
+
+            forgotPassword.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+
+            try {
+
+                // =================================================
+                // SEND FIREBASE PASSWORD RESET EMAIL
+                // =================================================
+
+                await sendPasswordResetEmail(
+                    auth,
+                    email
+                );
+
+
+                // =================================================
+                // SUCCESS MESSAGE
+                // =================================================
+
+                loginMessage.className =
+                    "message success";
+
+
+                loginMessage.textContent =
+                    "If this email is registered, a password reset link has been sent. Please check your inbox.";
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "HOD Password Reset Error:",
+                    error
+                );
+
+
+                loginMessage.className =
+                    "message error";
+
+
+                // =================================================
+                // INVALID EMAIL
+                // =================================================
+
+                if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    loginMessage.textContent =
+                        "Please enter a valid email address.";
+
+                }
+
+
+                // =================================================
+                // TOO MANY REQUESTS
+                // =================================================
+
+                else if (
+                    error.code ===
+                    "auth/too-many-requests"
+                ) {
+
+                    loginMessage.textContent =
+                        "Too many password reset attempts. Please try again later.";
+
+                }
+
+
+                // =================================================
+                // NETWORK ERROR
+                // =================================================
+
+                else if (
+                    error.code ===
+                    "auth/network-request-failed"
+                ) {
+
+                    loginMessage.textContent =
+                        "Network error. Please check your internet connection.";
+
+                }
+
+
+                // =================================================
+                // OTHER ERROR
+                // =================================================
+
+                else {
+
+                    loginMessage.textContent =
+                        "Unable to send password reset email. Please try again.";
+
+                }
+
+            }
+
+
+            finally {
+
+                // =================================================
+                // ENABLE FORGOT PASSWORD LINK AGAIN
+                // =================================================
+
+                forgotPassword.style.pointerEvents =
+                    "auto";
+
+
+                forgotPassword.style.opacity =
+                    "1";
+
+
+                forgotPassword.innerHTML =
+                    '<i class="fa-solid fa-key"></i> Forgot Password?';
+
+            }
+
         }
     );
 }
@@ -249,6 +448,7 @@ loginForm.addEventListener(
                 "Please enter email and password."
             );
 
+
             return;
         }
 
@@ -266,6 +466,7 @@ loginForm.addEventListener(
             showLoginError(
                 "Only official @sknscoe.ac.in HOD accounts are allowed."
             );
+
 
             return;
         }
@@ -287,9 +488,6 @@ loginForm.addEventListener(
 
             // =================================================
             // KEEP HOD LOGGED IN
-            // =================================================
-            // Login remains active even after refresh/reopening
-            // until Logout is pressed.
             // =================================================
 
             await setPersistence(
@@ -451,9 +649,6 @@ loginForm.addEventListener(
             // =================================================
             // SAVE HOD INFORMATION LOCALLY
             // =================================================
-            // This allows the dashboard to display the
-            // HOD information immediately.
-            // =================================================
 
             localStorage.setItem(
                 "hodUID",
@@ -508,6 +703,7 @@ loginForm.addEventListener(
 
                 200
             );
+
         }
 
 
@@ -531,6 +727,7 @@ loginForm.addEventListener(
                 showLoginError(
                     "Invalid email or password."
                 );
+
             }
 
 
@@ -542,6 +739,7 @@ loginForm.addEventListener(
                 showLoginError(
                     "Invalid email address."
                 );
+
             }
 
 
@@ -553,6 +751,7 @@ loginForm.addEventListener(
                 showLoginError(
                     "This HOD account has been disabled."
                 );
+
             }
 
 
@@ -564,6 +763,7 @@ loginForm.addEventListener(
                 showLoginError(
                     "Too many login attempts. Try again later."
                 );
+
             }
 
 
@@ -575,6 +775,7 @@ loginForm.addEventListener(
                 showLoginError(
                     "Network error. Check your internet connection."
                 );
+
             }
 
 
@@ -587,7 +788,9 @@ loginForm.addEventListener(
                         error.message
                     )
                 );
+
             }
+
         }
 
 
@@ -603,7 +806,9 @@ loginForm.addEventListener(
 
             loginButton.innerHTML =
                 '<i class="fa-solid fa-right-to-bracket"></i> Login';
+
         }
+
     }
 );
 

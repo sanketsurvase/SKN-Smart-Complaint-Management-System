@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             else if (title === "Check Complaint Status") {
 
                 window.location.href =
-                    "../Status page/Status.html";
+                    "../Status/Status.html";
 
             }
 
