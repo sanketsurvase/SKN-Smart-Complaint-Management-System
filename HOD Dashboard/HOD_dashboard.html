@@ -2,347 +2,222 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Complaint Management Dashboard | SKN Sinhgad College of Engineering</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>HOD Dashboard</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-
-    <!-- ==========================================
-         CSS
-    ========================================== -->
-
-    <link rel="stylesheet"
-          href="HOD_dashboard.css">
-
-
-    <!-- ==========================================
-         GOOGLE FONT
-    ========================================== -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-          rel="stylesheet">
-
-
-    <!-- ==========================================
-         FONT AWESOME
-    ========================================== -->
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="HOD_dashboard.css">
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="header">
-
-
-    <div class="college">
-
-        <img
-            src="../Images/skn logo.png"
-            alt="College Logo">
-
-
-        <div>
-
-            <h2>
-                SKN Sinhgad College of Engineering, Pandharpur
-            </h2>
-
-
-            <p>
-                AI-Based Smart Complaint Management System
-            </p>
-
+    <!-- ==========================================
+         TOP INSTITUTIONAL BAR
+    =========================================== -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="affiliation-info">
+                <span><i class="fa-solid fa-building-columns"></i> SPSPM's SKN Sinhgad College of Engineering, Pandharpur</span>
+            </div>
+            <div class="top-bar-links">
+                <span class="live-status-pill"><span class="pulse-dot"></span> Live Realtime Redressal Sync</span>
+            </div>
         </div>
-
     </div>
 
+    <!-- ==========================================
+         EXECUTIVE HEADER
+    =========================================== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="college">
+                <div class="logo-link">
+                    <img src="../Images/skn logo.png" alt="College Logo" class="college-logo-img">
+                    <div class="logo-text">
+                        <span class="trust-badge">SPSPM'S</span>
+                        <h2>SKN Sinhgad College of Engineering</h2>
+                        <p class="portal-sub">Department Head Executive Oversight Desk</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- LOGOUT -->
-
-    <button
-        type="button"
-        class="logout-btn"
-        id="logoutButton">
-
-        <i class="fa-solid fa-right-from-bracket"></i>
-
-        Logout
-
-    </button>
-
-
-</header>
-
-
-<!-- =====================================================
-     DASHBOARD TITLE
-===================================================== -->
-
-<section class="dashboard-title">
-
-
-    <div>
-
-        <h1>
-            HOD Complaint Dashboard
-        </h1>
-
-
-        <p>
-            View anonymous complaints submitted by students.
-        </p>
-
-    </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main class="container">
-
-
-    <!-- =================================================
-         HOD INFORMATION
-    ================================================== -->
-
-    <div class="welcome-box">
-
-
-        <div>
-
-            <h2 id="hodName">
-                HOD
-            </h2>
-
-
-            <p id="hodDepartment">
-                Department
-            </p>
-
+            <!-- LOGOUT BUTTON -->
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutButton">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
         </div>
+    </header>
 
-
-        <div class="status-badge">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-            Authorized HOD
-
-        </div>
-
-
-    </div>
-
-
-    <!-- =================================================
-         SUMMARY CARDS
-    ================================================== -->
-
-    <div class="summary-cards">
-
-
-        <!-- TOTAL COMPLAINTS -->
-
-        <div class="summary-card">
-
-            <i class="fa-solid fa-file-lines"></i>
-
-            <div>
-
-                <h3 id="totalComplaints">
-                    0
-                </h3>
-
+    <!-- ==========================================
+         DASHBOARD TITLE & PROFILE BANNER
+    =========================================== -->
+    <section class="dashboard-title">
+        <div class="dashboard-title-inner">
+            <div class="title-left">
+                <h1>HOD Grievance Redressal Dashboard</h1>
                 <p>
-                    Total Complaints
+                    Review, supervise, and inspect all student grievances submitted for your department.
                 </p>
-
             </div>
-
-        </div>
-
-
-        <!-- PENDING COMPLAINTS -->
-
-        <div class="summary-card">
-
-            <i class="fa-solid fa-clock"></i>
-
-            <div>
-
-                <h3 id="pendingComplaints">
-                    0
-                </h3>
-
-                <p>
-                    Pending
-                </p>
-
+            <div class="title-right">
+                <div class="department-seal">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Departmental Oversight Desk</span>
+                </div>
             </div>
-
         </div>
-
-
-        <!-- IN PROGRESS COMPLAINTS -->
-
-        <div class="summary-card">
-
-            <i class="fa-solid fa-spinner"></i>
-
-            <div>
-
-                <h3 id="progressComplaints">
-                    0
-                </h3>
-
-                <p>
-                    In Progress
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- RESOLVED COMPLAINTS -->
-
-        <div class="summary-card">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-            <div>
-
-                <h3 id="resolvedComplaints">
-                    0
-                </h3>
-
-                <p>
-                    Resolved
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- =================================================
-         COMPLAINT SECTION
-    ================================================== -->
-
-    <section class="complaint-box">
-
-
-        <!-- =============================================
-             COMPLAINT SECTION HEADER
-        ============================================== -->
-
-        <div class="table-header">
-
-
-            <div>
-
-                <h2>
-                    Student Complaints
-                </h2>
-
-
-                <p>
-                    Click on a complaint to view complete details.
-                </p>
-
-            </div>
-
-
-            <!-- SEARCH -->
-
-            <input
-                type="text"
-                id="searchComplaint"
-                placeholder="Search Tracking ID..."
-                autocomplete="off">
-
-        </div>
-
-
-        <!-- =================================================
-             COMPLAINT LIST
-
-             JavaScript will create:
-
-             Complaint 1
-             Complaint 2
-             Complaint 3
-
-             and after clicking, complete details
-             will appear below that complaint.
-        ================================================== -->
-
-        <div
-            id="complaintContainer"
-            class="complaint-container">
-
-
-            <!-- INITIAL LOADING -->
-
-            <div class="loading">
-
-                <i class="fa-solid fa-spinner fa-spin"></i>
-
-                Loading complaints...
-
-            </div>
-
-
-        </div>
-
-
     </section>
 
+    <!-- ==========================================
+         MAIN DASHBOARD
+    =========================================== -->
+    <main class="container">
 
-</main>
+        <!-- ======================================
+             HOD WELCOME & PROFILE STRIP
+        ======================================= -->
+        <div class="welcome-box">
+            <div class="hod-profile-info">
+                <div class="hod-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div>
+                    <span class="welcome-label">Welcome back,</span>
+                    <h2 id="hodName">Head of Department</h2>
+                    <p class="dept-tag">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <span id="hodDepartment">Department Loading...</span>
+                    </p>
+                </div>
+            </div>
 
+            <div class="status-badge">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Verified Department Head</span>
+            </div>
+        </div>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+        <!-- ======================================
+             SUMMARY KPI CARDS
+        ======================================= -->
+        <div class="summary-cards">
 
-<footer>
+            <!-- TOTAL COMPLAINTS -->
+            <div class="summary-card total-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <div class="summary-info">
+                    <h3 id="totalComplaints">0</h3>
+                    <p>Total Complaints</p>
+                </div>
+            </div>
 
-    © 2026 AI-Based Smart Complaint Management System |
-    SKN Sinhgad College of Engineering, Pandharpur
+            <!-- PENDING -->
+            <div class="summary-card pending-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="summary-info">
+                    <h3 id="pendingComplaints">0</h3>
+                    <p>Pending Action</p>
+                </div>
+            </div>
 
-</footer>
+            <!-- IN PROGRESS -->
+            <div class="summary-card progress-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-spinner"></i>
+                </div>
+                <div class="summary-info">
+                    <h3 id="progressComplaints">0</h3>
+                    <p>In Progress</p>
+                </div>
+            </div>
 
+            <!-- RESOLVED -->
+            <div class="summary-card resolved-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="summary-info">
+                    <h3 id="resolvedComplaints">0</h3>
+                    <p>Resolved</p>
+                </div>
+            </div>
 
-<!-- =====================================================
-     FIREBASE / JAVASCRIPT
-===================================================== -->
+        </div>
 
-<script
-    type="module"
-    src="HOD_dashboard.js">
-</script>
+        <!-- ======================================
+             COMPLAINT LIST SECTION
+        ======================================= -->
+        <section class="complaint-box">
 
+            <!-- TABLE HEADER -->
+            <div class="table-header">
+                <div>
+                    <h2>Student Complaints Registry</h2>
+                    <p>Click any complaint card below to inspect full details, resolver assignment, and description.</p>
+                </div>
+
+                <!-- SEARCH -->
+                <div class="search-wrap">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input
+                        type="text"
+                        id="searchComplaint"
+                        placeholder="Search by Tracking ID or keyword..."
+                        autocomplete="off">
+                </div>
+            </div>
+
+            <!-- DYNAMIC COMPLAINT CONTAINER -->
+            <div
+                id="complaintContainer"
+                class="complaint-container">
+
+                <!-- INITIAL LOADING STATE -->
+                <div class="loading">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Synchronizing department complaints...</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2026 AI-Based Smart Complaint Management System | SKN Sinhgad College of Engineering, Pandharpur</p>
+            <div class="footer-note">
+                <i class="fa-solid fa-shield-halved"></i> Departmental Confidentiality Assured
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase / HOD Dashboard Script -->
+    <script
+        type="module"
+        src="HOD_dashboard.js">
+    </script>
 
 </body>
 

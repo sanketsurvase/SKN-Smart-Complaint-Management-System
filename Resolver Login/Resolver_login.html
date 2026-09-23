@@ -2,229 +2,202 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolver Portal Login | SKN Sinhgad College of Engineering</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Resolver Login</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <link rel="stylesheet"
-          href="Resolver.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="Resolver.css">
 </head>
-
 
 <body>
 
-
-<!-- ==========================================
-     HEADER
-========================================== -->
-
-<header class="header">
-
-    <div class="college">
-
-        <img src="../Images/skn logo.png"
-             alt="College Logo">
-
-        <div>
-
-            <h2>
-                SKN Sinhgad College of Engineering, Pandharpur
-            </h2>
-
-            <p>
-              Smart Complaint Management System
-            </p>
-
+    <!-- ==========================================
+         TOP BAR
+    =========================================== -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="affiliation-info">
+                <span><i class="fa-solid fa-building-columns"></i> SPSPM's SKN Sinhgad College of Engineering, Pandharpur</span>
+            </div>
+            <div class="top-bar-links">
+                <span class="security-badge"><i class="fa-solid fa-screwdriver-wrench"></i> Technical Redressal Desk</span>
+            </div>
         </div>
-
     </div>
 
-</header>
-
-
-<!-- ==========================================
-     MAIN
-========================================== -->
-
-<main class="container">
-
-    <div class="auth-box">
-
-
-        <!-- ICON -->
-
-        <div class="auth-icon">
-
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-
-        </div>
-
-
-        <!-- TITLE -->
-
-        <h1>
-            Complaint Resolver Access
-        </h1>
-
-
-        <!-- SUBTITLE -->
-
-        <p class="subtitle">
-            Authorized Resolver Login
-        </p>
-
-
-        <!-- ======================================
-             LOGIN FORM
-        ======================================= -->
-
-        <form id="loginForm">
-
-
-            <!-- EMAIL -->
-
-            <div class="input-box">
-
-                <label for="loginEmail">
-                    Resolver Email
-                </label>
-
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="resolver@sknscoe.ac.in"
-                    autocomplete="email"
-                    required>
-
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="college">
+                <a href="../Home page/home.html" class="logo-link">
+                    <img src="../Images/skn logo.png" alt="College Logo" class="college-logo-img">
+                    <div class="logo-text">
+                        <span class="trust-badge">SPSPM'S</span>
+                        <h2>SKN Sinhgad College of Engineering</h2>
+                        <p class="portal-sub">Technical Maintenance & Redressal Desk</p>
+                    </div>
+                </a>
             </div>
 
+            <div class="header-actions">
+                <button type="button" class="home-btn" onclick="window.location.href='../Home page/home.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-            <!-- PASSWORD -->
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+    <main class="container">
 
-            <div class="input-box">
+        <div class="auth-wrapper">
 
-                <label for="loginPassword">
-                    Password
-                </label>
+            <!-- Left Informative Banner -->
+            <div class="auth-banner">
+                <div class="auth-banner-content">
+                    <div class="banner-badge">
+                        <i class="fa-solid fa-wrench"></i>
+                        <span>Technical Maintenance</span>
+                    </div>
+                    <h2>Complaint Resolver Portal</h2>
+                    <p>
+                        Dedicated operations portal for campus maintenance specialists (Electrical, IT Support, Plumbing, Housekeeping, Labs, Classrooms) to act on assigned tickets and record resolution milestones.
+                    </p>
+                    <ul class="banner-checklist">
+                        <li><i class="fa-solid fa-circle-check"></i> Filter tickets by your specialized resolver domain</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Update grievance status (Pending, In Progress, Resolved)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Maintain prompt campus maintenance benchmarks</li>
+                    </ul>
+                    <div class="banner-footer-note">
+                        <i class="fa-solid fa-shield-halved"></i> Authorized Staff Operation Portal
+                    </div>
+                </div>
+            </div>
 
+            <!-- Right Login Form Box -->
+            <div class="auth-box">
 
-                <div class="password-box">
+                <div class="auth-header">
+                    <div class="auth-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <div>
+                        <h1>Resolver Login</h1>
+                        <p class="subtitle">Enter your official resolver account credentials.</p>
+                    </div>
+                </div>
 
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Enter Password"
-                        minlength="6"
-                        autocomplete="current-password"
-                        required>
+                <form id="loginForm">
 
+                    <!-- EMAIL -->
+                    <div class="input-box">
+                        <label for="loginEmail">
+                            <i class="fa-solid fa-envelope"></i> Resolver Official Email
+                        </label>
+                        <div class="input-wrap">
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                placeholder="resolver.electrical@sknscoe.ac.in"
+                                autocomplete="email"
+                                required>
+                        </div>
+                    </div>
 
+                    <!-- PASSWORD -->
+                    <div class="input-box">
+                        <label for="loginPassword">
+                            <i class="fa-solid fa-key"></i> Password
+                        </label>
+                        <div class="password-box">
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                placeholder="Enter your password"
+                                minlength="6"
+                                autocomplete="current-password"
+                                required>
+
+                            <button
+                                type="button"
+                                id="toggleLoginPassword"
+                                aria-label="Show or hide password">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FORGOT PASSWORD -->
+                    <div class="forgot-password-box">
+                        <a href="#" id="forgotPassword">
+                            <i class="fa-solid fa-circle-question"></i> Forgot Password?
+                        </a>
+                    </div>
+
+                    <!-- MESSAGE CONTAINER -->
+                    <p id="loginMessage" class="message"></p>
+
+                    <!-- LOGIN BUTTON -->
                     <button
-                        type="button"
-                        id="toggleLoginPassword"
-                        aria-label="Show or hide password">
-
-                        <i class="fa-solid fa-eye"></i>
-
+                        type="submit"
+                        class="main-btn"
+                        id="loginButton">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <span>Login to Resolver Desk</span>
                     </button>
 
+                </form>
+
+                <!-- AUTHORIZED INFO -->
+                <div class="authorized-info">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Access is strictly restricted to certified campus maintenance technicians and resolvers.</span>
+                </div>
+
+                <div class="alternate-portal-links">
+                    <span>Are you an Engineering HOD?</span>
+                    <a href="../HOD Login/HOD_login.html">HOD Portal Login <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
             </div>
 
-
-            <!-- ======================================
-                 FORGOT PASSWORD
-            ======================================= -->
-
-            <div class="forgot-password-box">
-
-                <a href="#"
-                   id="forgotPassword">
-
-                    Forgot Password?
-
-                </a>
-
-            </div>
-
-
-            <!-- LOGIN MESSAGE -->
-
-            <p
-                class="message"
-                id="loginMessage">
-            </p>
-
-
-            <!-- LOGIN BUTTON -->
-
-            <button
-                type="submit"
-                class="main-btn"
-                id="loginButton">
-
-                <i class="fa-solid fa-right-to-bracket"></i>
-
-                Login
-
-            </button>
-
-
-        </form>
-
-
-        <!-- ======================================
-             AUTHORIZED INFO
-        ======================================= -->
-
-        <div class="authorized-info">
-
-            <i class="fa-solid fa-lock"></i>
-
-            <span>
-                Access is restricted to authorized Resolvers only.
-            </span>
-
         </div>
 
+    </main>
 
-    </div>
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2026 AI-Based Smart Complaint Management System | SKN Sinhgad College of Engineering, Pandharpur</p>
+            <div class="footer-links">
+                <a href="../Home page/home.html">Home</a>
+                <span class="divider">|</span>
+                <a href="../HOD Login/HOD_login.html">HOD Portal</a>
+            </div>
+        </div>
+    </footer>
 
-</main>
-
-
-<!-- ==========================================
-     FOOTER
-========================================== -->
-
-<footer>
-
-    © 2026 AI-Based Smart Complaint Management System
-
-</footer>
-
-
-<!-- ==========================================
-     JAVASCRIPT
-========================================== -->
-
-<script
-    type="module"
-    src="Resolver.js">
-</script>
-
+    <!-- Firebase / Resolver Auth Script -->
+    <script
+        type="module"
+        src="Resolver.js">
+    </script>
 
 </body>
 
