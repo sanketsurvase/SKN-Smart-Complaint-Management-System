@@ -2,565 +2,357 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Grievance | SKN Sinhgad College of Engineering</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Register Complaint</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <link rel="stylesheet"
-          href="Complaint_register.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="Complaint_register.css">
 </head>
-
 
 <body>
 
+    <!-- ==========================================
+         TOP INSTITUTIONAL BAR
+    =========================================== -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="affiliation-info">
+                <span><i class="fa-solid fa-building-columns"></i> SPSPM's SKN Sinhgad College of Engineering, Pandharpur</span>
+                <span class="divider">|</span>
+                <span>Approved by AICTE, New Delhi & Affiliated to DBATU</span>
+            </div>
+            <div class="top-bar-links">
+                <span class="privacy-seal"><i class="fa-solid fa-shield-halved"></i> 100% Anonymous & Confidential</span>
+                <span class="divider">|</span>
+                <a href="../Home page/home.html#how-it-works"><i class="fa-regular fa-circle-question"></i> Process Help</a>
+            </div>
+        </div>
+    </div>
 
-<!-- ==========================================
-     HEADER
-========================================== -->
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="college">
+                <a href="../Home page/home.html" class="logo-link">
+                    <img src="../Images/skn logo.png" alt="College Logo" class="college-logo-img">
+                    <div class="logo-text">
+                        <span class="trust-badge">SPSPM'S</span>
+                        <h2>SKN Sinhgad College of Engineering</h2>
+                        <p class="portal-sub">Centralized Student Grievance Redressal Portal</p>
+                    </div>
+                </a>
+            </div>
 
-<header class="header">
+            <div class="header-actions">
+                <a href="../status/Status.html" class="header-btn status-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Check Status</span>
+                </a>
+                <button type="button" class="home-btn" onclick="window.location.href='../Home page/home.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    <div class="college">
-
-        <img src="../Images/skn logo.png"
-             alt="College Logo">
-
-        <div>
-
-            <h2>
-                SKN Sinhgad College of Engineering, Pandharpur
-            </h2>
-
+    <!-- ==========================================
+         PAGE HERO BANNER
+    =========================================== -->
+    <section class="page-title">
+        <div class="page-title-inner">
+            <div class="breadcrumb">
+                <a href="../Home page/home.html"><i class="fa-solid fa-house"></i> Home</a>
+                <i class="fa-solid fa-chevron-right separator"></i>
+                <span>Register Complaint</span>
+            </div>
+            <h1>Lodge Anonymous Grievance</h1>
             <p>
-                 Smart Complaint Management System
+                Submit your complaint securely. Your personal identity (name, email, roll number) is strictly protected and never recorded.
             </p>
-
         </div>
+    </section>
 
-    </div>
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+    <main class="container">
 
+        <!-- ======================================
+             COMPLAINT FORM BOX
+        ======================================= -->
+        <div class="form-box" id="formBox">
 
-    <button
-        type="button"
-        class="home-btn"
-        onclick="window.location.href='../Home page/home.html'">
-
-        <i class="fa-solid fa-house"></i>
-
-        Home
-
-    </button>
-
-</header>
-
-
-<!-- ==========================================
-     PAGE TITLE
-========================================== -->
-
-<section class="page-title">
-
-    <h1>
-        Register Complaint
-    </h1>
-
-    <p>
-        Submit your complaint anonymously.
-        No personal identity is required.
-    </p>
-
-</section>
-
-
-<!-- ==========================================
-     MAIN
-========================================== -->
-
-<main class="container">
-
-
-    <!-- ======================================
-         COMPLAINT FORM
-    ======================================= -->
-
-    <div
-        class="form-box"
-        id="formBox">
-
-
-        <form id="complaintForm">
-
-
-            <div class="form-section-title">
-
-                <i class="fa-solid fa-file-pen"></i>
-
-                Complaint Details
-
+            <div class="form-header-bar">
+                <div class="form-title-wrap">
+                    <div class="form-icon"><i class="fa-solid fa-file-pen"></i></div>
+                    <div>
+                        <h2>Complaint Submission Form</h2>
+                        <p>Fill in the required fields below. All fields marked with (<span class="required-star">*</span>) are mandatory.</p>
+                    </div>
+                </div>
+                <div class="form-badge">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Encrypted & Anonymous</span>
+                </div>
             </div>
 
-
-            <!-- ======================================
-                 DEPARTMENT
-            ======================================= -->
-
-            <div class="input-box">
-
-                <label for="department">
-
-                    Department
-                    <span>*</span>
-
-                </label>
-
-
-                <select
-                    id="department"
-                    name="department"
-                    required>
-
-                    <option value="">
-                        Select Department
-                    </option>
-
-                    <option value="CSE">
-                        Computer Science & Engineering
-                    </option>
-
-                    <option value="AIDS">
-                        Artificial Intelligence & Data Science
-                    </option>
-
-                    <option value="ENTC">
-                        Electronics & Telecommunication
-                    </option>
-
-                    <option value="Mechanical">
-                        Mechanical Engineering
-                    </option>
-
-                    <option value="Civil">
-                        Civil Engineering
-                    </option>
-
-                    <option value="Electrical">
-                        Electrical Engineering
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- ======================================
-                 CATEGORY
-            ======================================= -->
-
-            <div class="input-box">
-
-                <label for="category">
-
-                    Complaint Category
-                    <span>*</span>
-
-                </label>
-
-
-                <select
-                    id="category"
-                    name="category"
-                    required>
-
-                    <option value="">
-                        Select Complaint Category
-                    </option>
-
-                    <option value="Electrical">
-                        Electrical
-                    </option>
-
-                    <option value="Plumbing">
-                        Plumbing
-                    </option>
-
-                    <option value="IT Support">
-                        IT / Computer / Network
-                    </option>
-
-                    <option value="Housekeeping">
-                        Cleaning / Housekeeping
-                    </option>
-
-                    <option value="Classroom">
-                        Classroom
-                    </option>
-
-                    <option value="Laboratory">
-                        Laboratory
-                    </option>
-
-                    <option value="Library">
-                        Library
-                    </option>
-
-                    <option value="Canteen">
-                        Canteen
-                    </option>
-
-                    <option value="Hostel">
-                        Hostel
-                    </option>
-
-                    <option value="Transport">
-                        Transport
-                    </option>
-
-                    <option value="Sports">
-                        Sports
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- ======================================
-                 LOCATION
-            ======================================= -->
-
-            <div class="input-box">
-
-                <label for="location">
-
-                    Complaint Location
-                    <span>*</span>
-
-                </label>
-
-
-                <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    placeholder="Example: CSE Building, Classroom 302"
-                    maxlength="150"
-                    required>
-
-            </div>
-
-
-            <!-- ======================================
-                 SUBJECT
-            ======================================= -->
-
-            <div class="input-box">
-
-                <label for="subject">
-
-                    Complaint Subject
-                    <span>*</span>
-
-                </label>
-
-
-                <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    placeholder="Example: Classroom fan is not working"
-                    maxlength="100"
-                    required>
-
-            </div>
-
-
-            <!-- ======================================
-                 DESCRIPTION
-            ======================================= -->
-
-            <div class="input-box">
-
-                <label for="description">
-
-                    Complaint Description
-                    <span>*</span>
-
-                </label>
-
-
-                <textarea
-                    id="description"
-                    name="description"
-                    rows="7"
-                    maxlength="1000"
-                    placeholder="Describe the complaint clearly..."
-                    required></textarea>
-
-
-                <small>
-                    Provide sufficient information so that the issue can be identified and resolved.
-                </small>
-
-            </div>
-
-
-            <!-- ======================================
-                 SUPPORTING FILE
-            ======================================= -->
-
-            <div class="input-box">
-
-                <label for="file">
-
-                    Supporting File
-
-                    <small class="optional">
-                        (Optional)
-                    </small>
-
-                </label>
-
-
-                <input
-                    type="file"
-                    id="file"
-                    name="file"
-                    accept=".jpg,.jpeg,.png,.pdf">
-
-
-                <small>
-                    You may attach an image or PDF related to the complaint.
-                </small>
-
-            </div>
-
-
-            <!-- ======================================
-                 PRIVACY
-            ======================================= -->
-
-            <div class="privacy-box">
-
-                <div class="privacy-icon">
-
-                    <i class="fa-solid fa-shield-halved"></i>
+            <form id="complaintForm">
+
+                <!-- STEP 1: DEPARTMENT & CATEGORY -->
+                <div class="form-grid-2">
+
+                    <!-- DEPARTMENT -->
+                    <div class="input-box">
+                        <label for="department">
+                            <i class="fa-solid fa-building-user"></i> Department <span class="required-star">*</span>
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+                                <option value="CSE">Computer Science & Engineering (CSE)</option>
+                                <option value="AIDS">Artificial Intelligence & Data Science (AIDS)</option>
+                                <option value="ENTC">Electronics & Telecommunication (ENTC)</option>
+                                <option value="Mechanical">Mechanical Engineering</option>
+                                <option value="Civil">Civil Engineering</option>
+                                <option value="Electrical">Electrical Engineering</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-chevron"></i>
+                        </div>
+                        <small class="field-hint">Complaint will be overseen by this department's HOD.</small>
+                    </div>
+
+                    <!-- CATEGORY -->
+                    <div class="input-box">
+                        <label for="category">
+                            <i class="fa-solid fa-tags"></i> Complaint Category <span class="required-star">*</span>
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="category" name="category" required>
+                                <option value="">Select Complaint Category</option>
+                                <option value="Electrical">Electrical Maintenance</option>
+                                <option value="Plumbing">Plumbing & Water Supply</option>
+                                <option value="IT Support">IT / Computer / Campus Network</option>
+                                <option value="Housekeeping">Cleaning & Housekeeping</option>
+                                <option value="Classroom">Classroom Infrastructure / Projector</option>
+                                <option value="Laboratory">Laboratory Equipment</option>
+                                <option value="Library">Library Facilities</option>
+                                <option value="Canteen">Canteen & Cafeteria</option>
+                                <option value="Hostel">Hostel Accommodation</option>
+                                <option value="Transport">Campus Transport / Bus</option>
+                                <option value="Sports">Sports Ground & Gym</option>
+                                <option value="Other">Other Academic / Campus Issue</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down select-chevron"></i>
+                        </div>
+                        <small class="field-hint">Automates ticket dispatch to the specialized resolver team.</small>
+                    </div>
 
                 </div>
 
+                <!-- STEP 2: LOCATION & SUBJECT -->
+                <div class="form-grid-2">
 
-                <div>
+                    <!-- LOCATION -->
+                    <div class="input-box">
+                        <label for="location">
+                            <i class="fa-solid fa-location-dot"></i> Exact Campus Location <span class="required-star">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                placeholder="e.g., Main Building 3rd Floor, Lab 304, or Boys Hostel Room 12"
+                                maxlength="150"
+                                required>
+                        </div>
+                        <small class="field-hint">Helps the inspection team find the issue quickly.</small>
+                    </div>
 
-                    <h3>
-                        Anonymous Complaint
-                    </h3>
-
-                    <p>
-
-                        Your name, roll number, mobile number,
-                        email address and other personal identity
-                        information are not collected.
-
-                    </p>
+                    <!-- SUBJECT -->
+                    <div class="input-box">
+                        <label for="subject">
+                            <i class="fa-solid fa-heading"></i> Complaint Subject <span class="required-star">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="Brief title: e.g., Classroom fan not working / Projector issue"
+                                maxlength="100"
+                                required>
+                        </div>
+                        <small class="field-hint">A concise summary of the issue.</small>
+                    </div>
 
                 </div>
 
+                <!-- STEP 3: DETAILED DESCRIPTION -->
+                <div class="input-box">
+                    <label for="description">
+                        <i class="fa-solid fa-align-left"></i> Detailed Description <span class="required-star">*</span>
+                    </label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="6"
+                        maxlength="1000"
+                        placeholder="Please provide full details of the issue, when it started, and any specific observations to help the resolver team take swift action..."
+                        required></textarea>
+                    <div class="textarea-footer">
+                        <small class="field-hint">Provide sufficient context for accurate resolution. Do not mention your personal name or phone number.</small>
+                    </div>
+                </div>
+
+                <!-- STEP 4: SUPPORTING FILE -->
+                <div class="input-box">
+                    <label for="file">
+                        <i class="fa-solid fa-paperclip"></i> Supporting Document or Photo
+                        <span class="optional-tag">(Optional)</span>
+                    </label>
+                    <div class="file-upload-box">
+                        <input
+                            type="file"
+                            id="file"
+                            name="file"
+                            accept=".jpg,.jpeg,.png,.pdf">
+                        <div class="file-dummy">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span class="file-text">Click to browse or drag & drop image or PDF</span>
+                            <span class="file-types">Supported formats: JPG, PNG, PDF (Max 5MB)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRIVACY GUARANTEE BANNER -->
+                <div class="privacy-box">
+                    <div class="privacy-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3>Guaranteed 100% Anonymous Redressal</h3>
+                        <p>
+                            Your privacy is our priority. No personal information such as student roll number, mobile number, IP address, or email is saved with this ticket. The administration will only see the complaint content and category.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="buttons">
+                    <button type="reset" class="reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Reset Form</span>
+                    </button>
+
+                    <button type="submit" class="submit-btn" id="submitButton">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Submit Anonymous Complaint</span>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- ======================================
+             SUCCESS BOX (SHOWN AFTER SUBMISSION)
+        ======================================= -->
+        <div class="success-box" id="successBox" aria-live="polite" style="display: none;">
+
+            <!-- ANIMATED GREEN TICK -->
+            <div class="tick-circle" id="tickCircle">
+                <i class="fa-solid fa-check"></i>
             </div>
 
-
-            <!-- ======================================
-                 BUTTONS
-            ======================================= -->
-
-            <div class="buttons">
-
-                <button
-                    type="reset"
-                    class="reset-btn">
-
-                    <i class="fa-solid fa-rotate-left"></i>
-
-                    Reset
-
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="submit-btn"
-                    id="submitButton">
-
-                    <i class="fa-solid fa-paper-plane"></i>
-
-                    Submit Complaint
-
-                </button>
-
+            <div class="success-header">
+                <h2>Complaint Submitted Successfully!</h2>
+                <p class="success-message">
+                    Your grievance has been logged into the system and routed directly to the Department HOD and technical resolver.
+                </p>
             </div>
 
+            <!-- TRACKING ID DISPLAY CARD -->
+            <div class="tracking-section" id="trackingSection">
+                <span class="tracking-pill"><i class="fa-solid fa-fingerprint"></i> Generated Tracking Reference</span>
+                <p class="tracking-title">Your Unique Complaint Tracking ID</p>
+                <div class="tracking-id-display">
+                    <h1 id="complaintID" class="complaint-id">CMP...</h1>
+                </div>
+                <p class="tracking-help">
+                    <i class="fa-solid fa-circle-info"></i> Please copy or save this Tracking ID carefully. You will need it to monitor your complaint resolution progress.
+                </p>
+            </div>
 
-        </form>
+            <!-- NEXT STEPS / INFO -->
+            <div class="success-guidance">
+                <div class="guidance-step">
+                    <div class="g-num">1</div>
+                    <p>Save your Tracking ID immediately</p>
+                </div>
+                <div class="guidance-step">
+                    <div class="g-num">2</div>
+                    <p>Resolver team will inspect within 24-48 hours</p>
+                </div>
+                <div class="guidance-step">
+                    <div class="g-num">3</div>
+                    <p>Track progress anytime via "Check Status"</p>
+                </div>
+            </div>
 
-    </div>
+            <!-- SUCCESS ACTION BUTTONS -->
+            <div class="success-buttons">
+                <button type="button" class="copy-btn" id="copyButton">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>Copy Tracking ID</span>
+                </button>
 
+                <button type="button" class="another-btn" id="anotherComplaint">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Register Another Complaint</span>
+                </button>
 
-    <!-- ======================================
-         SUCCESS BOX
-    ======================================= -->
-
-    <div
-        class="success-box"
-        id="successBox"
-        aria-live="polite">
-
-
-        <!-- ANIMATED GREEN TICK -->
-
-        <div
-            class="tick-circle"
-            id="tickCircle">
-
-            <i class="fa-solid fa-check"></i>
-
-        </div>
-
-
-        <h2>
-            Complaint Submitted Successfully
-        </h2>
-
-
-        <p class="success-message">
-
-            Your complaint has been registered successfully.
-
-        </p>
-
-
-        <!-- ==================================
-             TRACKING ID
-        =================================== -->
-
-        <div
-            class="tracking-section"
-            id="trackingSection">
-
-
-            <p class="tracking-title">
-                Your Tracking ID
-            </p>
-
-
-            <h1
-                id="complaintID"
-                class="complaint-id">
-            </h1>
-
-
-            <p class="tracking-help">
-
-                Use this Tracking ID to check your
-                complaint status later.
-
-            </p>
+                <button type="button" class="back-btn" onclick="window.location.href='../Home page/home.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Return to Home</span>
+                </button>
+            </div>
 
         </div>
 
+    </main>
 
-        <p class="save-message">
-
-            <i class="fa-solid fa-circle-info"></i>
-
-            Please save your Tracking ID carefully.
-            You will need it to track the complaint.
-
-        </p>
-
-
-        <!-- ==================================
-             SUCCESS BUTTONS
-        =================================== -->
-
-        <div class="success-buttons">
-
-
-            <button
-                type="button"
-                class="copy-btn"
-                id="copyButton">
-
-                <i class="fa-solid fa-copy"></i>
-
-                Copy Tracking ID
-
-            </button>
-
-
-            <button
-                type="button"
-                class="another-btn"
-                id="anotherComplaint">
-
-                <i class="fa-solid fa-plus"></i>
-
-                Register Another Complaint
-
-            </button>
-
-
-            <button
-                type="button"
-                class="back-btn"
-                onclick="window.location.href='../Home page/home.html'">
-
-                <i class="fa-solid fa-house"></i>
-
-                Back to Home
-
-            </button>
-
-
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2026 AI-Based Smart Complaint Management System | SKN Sinhgad College of Engineering, Pandharpur</p>
+            <div class="footer-links">
+                <a href="../Home page/home.html">Home</a>
+                <span class="divider">|</span>
+                <a href="../status/Status.html">Check Status</a>
+                <span class="divider">|</span>
+                <span class="privacy-note"><i class="fa-solid fa-shield-halved"></i> Anonymous Redressal Guaranteed</span>
+            </div>
         </div>
+    </footer>
 
-    </div>
-
-
-</main>
-
-
-<!-- ==========================================
-     FOOTER
-========================================== -->
-
-<footer>
-
-    <p>
-        © 2026 AI-Based Smart Complaint Management System
-    </p>
-
-</footer>
-
-
-<script
-    type="module"
-    src="Complaint_register.js">
-</script>
-
+    <!-- Firebase Complaint Registration Script -->
+    <script type="module" src="Complaint_register.js"></script>
 
 </body>
 
-</html>     
+</html>

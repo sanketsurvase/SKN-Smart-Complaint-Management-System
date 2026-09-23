@@ -2,329 +2,450 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Complaint Management System | SKN Sinhgad College of Engineering</title>
 
-    <title>AI Smart Complaint Management System</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-
-    <!-- CSS -->
-
-    <link rel="stylesheet" href="home.css">
-
-
-    <!-- GOOGLE FONT -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
-
-    <!-- FONT AWESOME -->
-
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="home.css">
 
-    <!-- JAVASCRIPT -->
-
-    <script src="home.js" defer>
-    </script>
-
+    <!-- JavaScript -->
+    <script src="home.js" defer></script>
 </head>
-
 
 <body>
 
+    <!-- ==========================================
+         TOP INSTITUTIONAL BAR
+    =========================================== -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="affiliation-info">
+                <span><i class="fa-solid fa-building-columns"></i> SPSPM's SKN Sinhgad College of Engineering, Pandharpur</span>
+                <span class="divider">|</span>
+                <span class="accreditation"><i class="fa-solid fa-award"></i> Approved by AICTE, New Delhi & Affiliated to DBATU / PAH Solapur University</span>
+            </div>
+            <div class="top-bar-links">
+                <span class="confidential-badge"><i class="fa-solid fa-shield-halved"></i> 100% Anonymous & Secure</span>
+                <span class="divider">|</span>
+                <a href="#how-it-works"><i class="fa-regular fa-circle-question"></i> Help Guide</a>
+            </div>
+        </div>
+    </div>
 
     <!-- ==========================================
-     HEADER
-========================================== -->
-
+         COLLEGE HEADER
+    =========================================== -->
     <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="home.html" class="logo-link">
+                    <img src="../Images/skn logo.png" alt="SKN Sinhgad College of Engineering Logo" class="college-logo-img">
+                    <div class="logo-text">
+                        <span class="trust-title">SPSPM'S</span>
+                        <h3>SKN Sinhgad College of Engineering</h3>
+                        <p class="campus-sub">Korti, Pandharpur • Centralized Student Grievance Redressal Portal</p>
+                    </div>
+                </a>
+            </div>
 
-        <div class="logo">
-
-            <img src="../Images/skn logo.png" alt="College Logo">
-
-            <h3>
-                SKN Sinhgad College of Engineering, Pandharpur
-            </h3>
-
+            <nav class="nav-container">
+                <ul class="nav-links">
+                    <li class="active">
+                        <a href="home.html">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../Complaint Register page/Complaint_register.html">
+                            <i class="fa-solid fa-file-pen"></i>
+                            <span>Register Complaint</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../status/Status.html">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Check Status</span>
+                        </a>
+                    </li>
+                    <li class="dropdown-item">
+                        <div class="portal-badge-group">
+                            <a href="../HOD Login/HOD_login.html" class="staff-btn hod-nav-btn" title="HOD Login">
+                                <i class="fa-solid fa-user-shield"></i>
+                                <span>HOD Login</span>
+                            </a>
+                            <a href="../Resolver Login/Resolver_login.html" class="staff-btn resolver-nav-btn" title="Resolver Login">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                <span>Resolver Login</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
-
-
-        <nav>
-
-            <ul>
-
-                <li class="active">
-
-                    <a href="home.html">
-
-                        <i class="fa-solid fa-house"></i>
-
-                        Home
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </nav>
-
     </header>
 
+    <!-- ==========================================
+         HERO SECTION
+    =========================================== -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-shield-cat"></i>
+                <span>Official Student Grievance Redressal Mechanism</span>
+            </div>
+            <h1 class="hero-title">
+                Student Complaint &<br>
+                <span>Grievance Management Portal</span>
+            </h1>
+            <p class="hero-description">
+                Empowering students to voice campus, academic, hostel, and infrastructure issues anonymously. 
+                Our automated AI system routes complaints directly to respective Department HODs and maintenance teams with real-time tracking.
+            </p>
+            <div class="hero-actions">
+                <button type="button" class="btn-primary" onclick="openRegisterComplaint()">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    <span>Register New Complaint</span>
+                </button>
+                <button type="button" class="btn-secondary" onclick="openComplaintStatus()">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>Track Complaint Status</span>
+                </button>
+            </div>
+
+            <!-- Trust / Stats Bar -->
+            <div class="trust-metrics">
+                <div class="metric-item">
+                    <div class="metric-icon"><i class="fa-solid fa-user-secret"></i></div>
+                    <div class="metric-details">
+                        <h4>100% Anonymous</h4>
+                        <p>No student identity is logged</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                    <div class="metric-details">
+                        <h4>Automated Routing</h4>
+                        <p>Direct to Department & Resolver</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon"><i class="fa-solid fa-barcode"></i></div>
+                    <div class="metric-details">
+                        <h4>Instant Tracking ID</h4>
+                        <p>Real-time resolution updates</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <div class="metric-details">
+                        <h4>HOD Monitored</h4>
+                        <p>Direct academic supervision</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ==========================================
-     MAIN PAGE
-========================================== -->
-
+         MAIN PAGE / ACTIONS SECTION
+    =========================================== -->
     <main class="container">
 
-
-        <!-- PAGE TITLE -->
-
-        <h1>
-            Student Complaint Portal
-        </h1>
-
-
-        <p class="subtitle">
-            AI-Based Smart Complaint Management System
-        </p>
-
+        <div class="section-header-center">
+            <span class="section-tag">Quick Actions</span>
+            <h2>What Would You Like To Do Today?</h2>
+            <p>Choose an option below to lodge a confidential grievance or follow up on your existing ticket.</p>
+        </div>
 
         <!-- ======================================
-         DASHBOARD CARDS
-    ======================================= -->
-
+             DASHBOARD CARDS
+        ======================================= -->
         <div class="cards">
 
-
-            <!-- ==================================
-             REGISTER COMPLAINT
-        =================================== -->
-
-            <div class="card">
-
-                <i class="fa-solid fa-file-circle-plus"></i>
-
-
-                <h2>
-                    Register Complaint
-                </h2>
-
-
+            <!-- REGISTER COMPLAINT -->
+            <div class="card card-register">
+                <div class="card-highlight-bar"></div>
+                <div class="card-icon-wrap">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                </div>
+                <h2>Register Complaint</h2>
                 <p>
-                    Submit a new complaint anonymously without login.
+                    Submit a new grievance without logging in. Your name, email, and roll number are never recorded, assuring complete confidentiality.
                 </p>
-
-
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Multi-department routing (CSE, AIDS, ENTC, Mech, Civil, Electrical)</li>
+                    <li><i class="fa-solid fa-check"></i> Support file attachments (Photos/PDF)</li>
+                    <li><i class="fa-solid fa-check"></i> Instant unique Tracking ID generated</li>
+                </ul>
                 <button type="button" onclick="openRegisterComplaint()">
-
                     <i class="fa-solid fa-file-pen"></i>
-
                     Register Complaint
-
                 </button>
-
             </div>
 
-
-            <!-- ==================================
-             CHECK COMPLAINT STATUS
-        =================================== -->
-
-            <div class="card">
-
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
-
-
-                <h2>
-                    Check Complaint Status
-                </h2>
-
-
+            <!-- CHECK COMPLAINT STATUS -->
+            <div class="card card-status">
+                <div class="card-highlight-bar"></div>
+                <div class="card-icon-wrap">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </div>
+                <h2>Check Complaint Status</h2>
                 <p>
-                    Enter your Tracking ID to check complaint progress.
+                    Check the current live progress of your previously submitted complaint using your unique Tracking ID issued during registration.
                 </p>
-
-
+                <ul class="card-features">
+                    <li><i class="fa-solid fa-check"></i> Instant live status (Pending, In Progress, Resolved)</li>
+                    <li><i class="fa-solid fa-check"></i> Transparent department & resolver updates</li>
+                    <li><i class="fa-solid fa-check"></i> 24/7 access without login credential</li>
+                </ul>
                 <button type="button" onclick="openComplaintStatus()">
-
                     <i class="fa-solid fa-magnifying-glass"></i>
-
                     Check Status
-
                 </button>
-
             </div>
-
 
         </div>
-
 
         <!-- ======================================
-         HOW IT WORKS
-    ======================================= -->
+             PORTALS BY ROLE (STUDENT / HOD / RESOLVER)
+        ======================================= -->
+        <section class="portal-roles-section">
+            <div class="section-header-center">
+                <span class="section-tag">Portal Access</span>
+                <h2>Dedicated Access Portals</h2>
+                <p>Official access points for Students, Department Heads, and Technical Support Resolvers.</p>
+            </div>
 
-        <div class="table-box">
+            <div class="roles-grid">
+                <!-- Role 1: Student -->
+                <div class="role-card">
+                    <div class="role-icon-box student-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="role-badge">Student Portal</span>
+                    <h3>Anonymous Grievance Filing</h3>
+                    <p>Open to all enrolled students for reporting campus, academic, hostel, lab, and sanitation issues safely.</p>
+                    <a href="../Complaint Register page/Complaint_register.html" class="role-link">
+                        <span>Lodge Complaint</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
 
-            <h2>
-                How It Works
-            </h2>
+                <!-- Role 2: HOD -->
+                <div class="role-card">
+                    <div class="role-icon-box hod-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <span class="role-badge">HOD Portal</span>
+                    <h3>Departmental Supervision</h3>
+                    <p>Authorized access for Heads of Department to monitor, review, and oversee grievance redressal in real time.</p>
+                    <a href="../HOD Login/HOD_login.html" class="role-link">
+                        <span>HOD Secure Login</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
 
+                <!-- Role 3: Resolver -->
+                <div class="role-card">
+                    <div class="role-icon-box resolver-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <span class="role-badge">Resolver Portal</span>
+                    <h3>Technical Action Desk</h3>
+                    <p>Dedicated dashboard for maintenance personnel (Electrical, IT, Plumbing, Housekeeping) to resolve issues.</p>
+                    <a href="../Resolver Login/Resolver_login.html" class="role-link">
+                        <span>Resolver Login</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-            <table>
+        <!-- ======================================
+             HOW IT WORKS (VISUAL STEPPER)
+        ======================================= -->
+        <section class="how-it-works-section" id="how-it-works">
+            <div class="section-header-center">
+                <span class="section-tag">Step-by-Step Guide</span>
+                <h2>How The Redressal Process Works</h2>
+                <p>From anonymous registration to verified resolution, our streamlined 5-step lifecycle ensures total transparency.</p>
+            </div>
 
-                <thead>
+            <div class="timeline-stepper">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-number-pill">01</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <h3>Lodge Grievance</h3>
+                    <p>Click on <strong>Register Complaint</strong> and enter the department, category, campus location, and description.</p>
+                </div>
 
-                    <tr>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-number-pill">02</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3>Smart Routing</h3>
+                    <p>The system intelligently routes the ticket directly to the designated department HOD and category resolver.</p>
+                </div>
 
-                        <th>
-                            Step
-                        </th>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-number-pill">03</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <h3>Get Tracking ID</h3>
+                    <p>Upon submission, a unique Tracking ID (e.g. <code>CMP...</code>) is generated. Copy and save it for future tracking.</p>
+                </div>
 
-                        <th>
-                            Process
-                        </th>
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-number-pill">04</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3>Ground Resolution</h3>
+                    <p>The assigned technical team inspects the reported issue on site and initiates resolution measures.</p>
+                </div>
 
-                    </tr>
+                <!-- Step 5 -->
+                <div class="step-card">
+                    <div class="step-number-pill">05</div>
+                    <div class="step-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3>Track & Complete</h3>
+                    <p>Check the live progress via <strong>Check Status</strong> anytime. The ticket is marked resolved once inspected.</p>
+                </div>
+            </div>
 
-                </thead>
-
-
-                <tbody>
-
-
-                    <!-- STEP 1 -->
-
-                    <tr>
-
-                        <td>
-                            1
-                        </td>
-
-                        <td>
-                            Click on Register Complaint and enter your complaint details.
-                        </td>
-
-                    </tr>
-
-
-                    <!-- STEP 2 -->
-
-                    <tr>
-
-                        <td>
-                            2
-                        </td>
-
-                        <td>
-                            Select your department and complaint category,
-                            then submit the complaint.
-                        </td>
-
-                    </tr>
-
-
-                    <!-- STEP 3 -->
-
-                    <tr>
-
-                        <td>
-                            3
-                        </td>
-
-                        <td>
-                            After successful submission, the system displays
-                            a confirmation animation and generates a unique Tracking ID.
-                        </td>
-
-                    </tr>
-
-
-                    <!-- STEP 4 -->
-
-                    <tr>
-
-                        <td>
-                            4
-                        </td>
-
-                        <td>
-                            Save or copy your Tracking ID for future use.
-                        </td>
-
-                    </tr>
-
-
-                    <!-- STEP 5 -->
-
-                    <tr>
-
-                        <td>
-                            5
-                        </td>
-
-                        <td>
-                            Open Check Complaint Status and enter your
-                            Tracking ID to view the current complaint status.
-                        </td>
-
-                    </tr>
-
-
-                </tbody>
-
-            </table>
-
-        </div>
-
+            <!-- Campus Categories Banner -->
+            <div class="categories-strip">
+                <span class="categories-title"><i class="fa-solid fa-layer-group"></i> Supported Facilities:</span>
+                <span class="cat-pill"><i class="fa-solid fa-bolt"></i> Electrical</span>
+                <span class="cat-pill"><i class="fa-solid fa-laptop-code"></i> IT & Computer Labs</span>
+                <span class="cat-pill"><i class="fa-solid fa-faucet-drip"></i> Plumbing & Water</span>
+                <span class="cat-pill"><i class="fa-solid fa-broom"></i> Housekeeping</span>
+                <span class="cat-pill"><i class="fa-solid fa-chalkboard-user"></i> Classrooms</span>
+                <span class="cat-pill"><i class="fa-solid fa-flask"></i> Laboratories</span>
+                <span class="cat-pill"><i class="fa-solid fa-book-open"></i> Library</span>
+                <span class="cat-pill"><i class="fa-solid fa-utensils"></i> Canteen & Hostel</span>
+            </div>
+        </section>
 
     </main>
 
-
     <!-- ==========================================
-     FOOTER
-========================================== -->
+         COLLEGE FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-grid">
+                <!-- Col 1: College Info -->
+                <div class="footer-col col-main">
+                    <div class="footer-brand">
+                        <img src="../Images/skn logo.png" alt="College Logo" class="footer-logo">
+                        <div>
+                            <h4>SKN Sinhgad College of Engineering</h4>
+                            <p class="trust-name">Savitribai Phule Shikshan Prasarak Mandal (SPSPM)</p>
+                        </div>
+                    </div>
+                    <p class="college-bio">
+                        Committed to technical excellence, student welfare, and transparent campus administration. 
+                        Our smart grievance system guarantees confidentiality and prompt accountability for all students.
+                    </p>
+                    <div class="accreditation-tags">
+                        <span>NAAC Accredited</span>
+                        <span>AICTE Approved</span>
+                        <span>DBATU Affiliated</span>
+                    </div>
+                </div>
 
-    <footer>
+                <!-- Col 2: Quick Links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="home.html"><i class="fa-solid fa-chevron-right"></i> Home Portal</a></li>
+                        <li><a href="../Complaint Register page/Complaint_register.html"><i class="fa-solid fa-chevron-right"></i> Register Complaint</a></li>
+                        <li><a href="../status/Status.html"><i class="fa-solid fa-chevron-right"></i> Track Grievance Status</a></li>
+                        <li><a href="#how-it-works"><i class="fa-solid fa-chevron-right"></i> Redressal Process Guide</a></li>
+                    </ul>
+                </div>
 
-        © 2026 Smart Complaint Management System |
-        SKN Sinhgad College of Engineering, Pandharpur
+                <!-- Col 3: Staff Portals -->
+                <div class="footer-col">
+                    <h4>Administrative Portals</h4>
+                    <ul class="footer-links">
+                        <li><a href="../HOD Login/HOD_login.html"><i class="fa-solid fa-lock"></i> Head of Department Login</a></li>
+                        <li><a href="../Resolver Login/Resolver_login.html"><i class="fa-solid fa-screwdriver-wrench"></i> Technical Resolver Login</a></li>
+                        <li><a href="https://sknscoe.ac.in" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Official College Website</a></li>
+                    </ul>
+                </div>
 
+                <!-- Col 4: Campus Contact -->
+                <div class="footer-col">
+                    <h4>Campus Address</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>At Post Korti, Taluka Pandharpur, District Solapur, Maharashtra, India - 413304</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>grievance@sknscoe.ac.in</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+91 2186 216063 / 216163</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Anti-Ragging Helpline Available 24x7</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>© 2026 AI-Based Smart Complaint Management System | SKN Sinhgad College of Engineering, Pandharpur. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <span class="privacy-note"><i class="fa-solid fa-user-shield"></i> Zero Student Identity Logging Assured</span>
+                </div>
+            </div>
+        </div>
     </footer>
 
-
     <!-- ==========================================
-     PAGE NAVIGATION
-========================================== -->
-
+         PAGE NAVIGATION JAVASCRIPT
+    =========================================== -->
     <script>
-
         // OPEN REGISTER COMPLAINT PAGE
-
         function openRegisterComplaint() {
-
-            window.location.href =
-                "../Complaint Register page/Complaint_register.html";
-
+            window.location.href = "../Complaint Register page/Complaint_register.html";
         }
-
 
         // OPEN COMPLAINT STATUS PAGE
-
         function openComplaintStatus() {
-
-            window.location.href =
-                "../status/Status.html";
-
+            window.location.href = "../status/Status.html";
         }
-
     </script>
-
 
 </body>
 
