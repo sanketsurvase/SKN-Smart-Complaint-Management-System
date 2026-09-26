@@ -2,254 +2,201 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Portal Login | SKN Sinhgad College of Engineering</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>HOD Login</title>
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- CSS -->
-
-    <link rel="stylesheet"
-          href="HOD_login.css">
-
-
-    <!-- GOOGLE FONT -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-          rel="stylesheet">
-
-
-    <!-- FONT AWESOME -->
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <link rel="stylesheet" href="HOD_login.css">
 </head>
-
 
 <body>
 
-
-<!-- ==========================================
-     HEADER
-=========================================== -->
-
-<header class="header">
-
-    <div class="college">
-
-        <img src="../Images/skn logo.png"
-             alt="College Logo">
-
-        <div>
-
-            <h2>
-                SKN Sinhgad College of Engineering, Pandharpur
-            </h2>
-
-            <p>
-                Smart Complaint Management System
-            </p>
-
+    <!-- ==========================================
+         TOP BAR
+    =========================================== -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="affiliation-info">
+                <span><i class="fa-solid fa-building-columns"></i> SPSPM's SKN Sinhgad College of Engineering, Pandharpur</span>
+            </div>
+            <div class="top-bar-links">
+                <span class="security-badge"><i class="fa-solid fa-shield-halved"></i> Authorized Administrative Gateway</span>
+            </div>
         </div>
-
     </div>
 
-</header>
-
-
-
-<!-- ==========================================
-     MAIN CONTENT
-=========================================== -->
-
-<main class="container">
-
-
-    <div class="auth-box">
-
-
-        <!-- ICON -->
-
-        <div class="auth-icon">
-
-            <i class="fa-solid fa-user-shield"></i>
-
-        </div>
-
-
-        <!-- TITLE -->
-
-        <h1>
-            HOD Access
-        </h1>
-
-
-        <!-- SUBTITLE -->
-
-        <p class="subtitle">
-            Authorized HOD Login
-        </p>
-
-
-
-        <!-- ======================================
-             LOGIN FORM
-        ======================================= -->
-
-        <form id="loginForm">
-
-
-            <!-- EMAIL -->
-
-            <div class="input-box">
-
-                <label for="loginEmail">
-                    HOD Email
-                </label>
-
-
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="example@sknscoe.ac.in"
-                    autocomplete="email"
-                    required>
-
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="college">
+                <a href="../Home page/home.html" class="logo-link">
+                    <img src="../Images/skn logo.png" alt="College Logo" class="college-logo-img">
+                    <div class="logo-text">
+                        <span class="trust-badge">SPSPM'S</span>
+                        <h2>SKN Sinhgad College of Engineering</h2>
+                        <p class="portal-sub">Department Head Grievance Redressal Portal</p>
+                    </div>
+                </a>
             </div>
 
+            <div class="header-actions">
+                <button type="button" class="home-btn" onclick="window.location.href='../Home page/home.html'">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
+    <!-- ==========================================
+         MAIN AUTHENTICATION CONTENT
+    =========================================== -->
+    <main class="container">
 
-            <!-- PASSWORD -->
+        <div class="auth-wrapper">
 
-            <div class="input-box">
+            <!-- Side Branding Banner -->
+            <div class="auth-banner">
+                <div class="auth-banner-content">
+                    <div class="banner-badge">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span>Department Oversight</span>
+                    </div>
+                    <h2>Head of Department Portal</h2>
+                    <p>
+                        Secure administration dashboard for Heads of Engineering Departments (CSE, AIDS, ENTC, Mechanical, Civil, Electrical) to review, track, and monitor student grievances.
+                    </p>
+                    <ul class="banner-checklist">
+                        <li><i class="fa-solid fa-circle-check"></i> Real-time departmental grievance oversight</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Monitor maintenance resolvers & tickets</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Verified resolution sign-offs</li>
+                    </ul>
+                    <div class="banner-footer-note">
+                        <i class="fa-solid fa-lock"></i> 256-bit Secure Institutional Encryption
+                    </div>
+                </div>
+            </div>
 
-                <label for="loginPassword">
-                    Password
-                </label>
+            <!-- Login Form Card -->
+            <div class="auth-box">
 
+                <div class="auth-header">
+                    <div class="auth-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <h1>HOD Authentication</h1>
+                        <p class="subtitle">Please enter your official institutional credentials.</p>
+                    </div>
+                </div>
 
-                <div class="password-box">
+                <form id="loginForm">
 
+                    <!-- EMAIL -->
+                    <div class="input-box">
+                        <label for="loginEmail">
+                            <i class="fa-solid fa-envelope"></i> Institutional Email Address
+                        </label>
+                        <div class="input-wrap">
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                placeholder="hod.cse@sknscoe.ac.in"
+                                autocomplete="email"
+                                required>
+                        </div>
+                    </div>
 
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Enter Password"
-                        autocomplete="current-password"
-                        required>
+                    <!-- PASSWORD -->
+                    <div class="input-box">
+                        <label for="loginPassword">
+                            <i class="fa-solid fa-key"></i> Account Password
+                        </label>
+                        <div class="password-box">
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                placeholder="Enter your HOD password"
+                                autocomplete="current-password"
+                                required>
 
+                            <button
+                                type="button"
+                                id="toggleLoginPassword"
+                                aria-label="Show or hide password">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
 
-                    <!-- SHOW / HIDE PASSWORD -->
+                    <!-- FORGOT PASSWORD LINK -->
+                    <div class="forgot-password-box">
+                        <a href="#" id="forgotPassword">
+                            <i class="fa-solid fa-circle-question"></i> Forgot Password?
+                        </a>
+                    </div>
 
+                    <!-- MESSAGE CONTAINER -->
+                    <p id="loginMessage" class="message"></p>
+
+                    <!-- LOGIN BUTTON -->
                     <button
-                        type="button"
-                        id="toggleLoginPassword"
-                        aria-label="Show or hide password">
-
-                        <i class="fa-solid fa-eye"></i>
-
+                        type="submit"
+                        class="main-btn"
+                        id="loginButton">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <span>Secure Login to Dashboard</span>
                     </button>
 
+                </form>
 
+                <!-- SECURITY BANNER -->
+                <div class="authorized-info">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Restricted to authorized Heads of Department only. Unauthorized login attempts are monitored and logged.</span>
+                </div>
+
+                <div class="alternate-portal-links">
+                    <span>Are you a technical resolver?</span>
+                    <a href="../Resolver Login/Resolver_login.html">Resolver Login <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
             </div>
 
-
-
-            <!-- ======================================
-                 FORGOT PASSWORD
-            ======================================= -->
-
-            <div class="forgot-password-box">
-
-                <a href="#"
-                   id="forgotPassword">
-
-                    Forgot Password?
-
-                </a>
-
-            </div>
-
-
-
-            <!-- LOGIN MESSAGE -->
-
-            <p
-                id="loginMessage"
-                class="message">
-            </p>
-
-
-
-            <!-- LOGIN BUTTON -->
-
-            <button
-                type="submit"
-                class="main-btn"
-                id="loginButton">
-
-                <i class="fa-solid fa-right-to-bracket"></i>
-
-                Login
-
-            </button>
-
-
-        </form>
-
-
-
-        <!-- ======================================
-             SECURITY INFORMATION
-        ======================================= -->
-
-        <div class="authorized-info">
-
-            <i class="fa-solid fa-lock"></i>
-
-            <span>
-                Access is restricted to authorized HODs only.
-            </span>
-
         </div>
 
+    </main>
 
-    </div>
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2026 AI-Based Smart Complaint Management System | SKN Sinhgad College of Engineering, Pandharpur</p>
+            <div class="footer-links">
+                <a href="../Home page/home.html">Home</a>
+                <span class="divider">|</span>
+                <a href="../Resolver Login/Resolver_login.html">Resolver Portal</a>
+            </div>
+        </div>
+    </footer>
 
-
-</main>
-
-
-
-<!-- ==========================================
-     FOOTER
-=========================================== -->
-
-<footer>
-
-    © 2026 Smart Complaint Management System |
-    SKN Sinhgad College of Engineering, Pandharpur
-
-</footer>
-
-
-
-<!-- ==========================================
-     JAVASCRIPT
-=========================================== -->
-
-<script
-    type="module"
-    src="HOD_login.js">
-</script>
-
+    <!-- Firebase / HOD Auth Script -->
+    <script
+        type="module"
+        src="HOD_login.js">
+    </script>
 
 </body>
 

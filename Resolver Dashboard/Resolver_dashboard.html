@@ -1,312 +1,212 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolver Operations Dashboard | SKN Sinhgad College of Engineering</title>
 
-        <meta charset="UTF-8">
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-        <meta name="viewport"
-            content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-        <title>Resolver Dashboard</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="Resolver_dashboard.css">
+</head>
 
-        <!-- CSS -->
-        <link rel="stylesheet"
-            href="Resolver_dashboard.css">
-
-        <!-- GOOGLE FONT -->
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-            rel="stylesheet">
-
-        <!-- FONT AWESOME -->
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    </head>
-
-
-    <body>
-
+<body>
 
     <!-- ==========================================
-        HEADER
-    ========================================== -->
+         TOP INSTITUTIONAL BAR
+    =========================================== -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="affiliation-info">
+                <span><i class="fa-solid fa-building-columns"></i> SPSPM's SKN Sinhgad College of Engineering, Pandharpur</span>
+            </div>
+            <div class="top-bar-links">
+                <span class="live-status-pill"><span class="pulse-dot"></span> Resolver Workbench Active</span>
+            </div>
+        </div>
+    </div>
 
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
     <header class="header">
-
-        <div class="college">
-
-            <img src="../Images/skn logo.png"
-                alt="College Logo">
-
-            <div>
-
-                <h2>
-                    SKN Sinhgad College of Engineering, Pandharpur
-                </h2>
-
-                <p>
-                    AI-Based Smart Complaint Management System
-                </p>
-
+        <div class="header-inner">
+            <div class="college">
+                <div class="logo-link">
+                    <img src="../Images/skn logo.png" alt="College Logo" class="college-logo-img">
+                    <div class="logo-text">
+                        <span class="trust-badge">SPSPM'S</span>
+                        <h2>SKN Sinhgad College of Engineering</h2>
+                        <p class="portal-sub">Technical Maintenance & Resolution Operations</p>
+                    </div>
+                </div>
             </div>
 
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutButton">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
         </div>
-
-
-        <button
-            type="button"
-            class="logout-btn"
-            id="logoutButton">
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            Logout
-
-        </button>
-
     </header>
 
-
     <!-- ==========================================
-        DASHBOARD TITLE
-    ========================================== -->
-
+         DASHBOARD TITLE BANNER
+    =========================================== -->
     <section class="dashboard-title">
-
-        <h1>
-            Resolver Dashboard
-        </h1>
-
-        <p>
-            View and resolve complaints related to your resolver category.
-        </p>
-
+        <div class="dashboard-title-inner">
+            <div class="title-left">
+                <h1>Technical Resolver Desk</h1>
+                <p>
+                    Inspect, manage, and update status for tickets assigned under your maintenance discipline.
+                </p>
+            </div>
+            <div class="title-right">
+                <div class="operations-seal">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span>Certified Campus Maintenance</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-
     <!-- ==========================================
-        MAIN
-    ========================================== -->
-
+         MAIN CONTENT
+    =========================================== -->
     <main class="container">
 
-
         <!-- ======================================
-            RESOLVER INFORMATION
+             RESOLVER INFO STRIP
         ======================================= -->
-
         <div class="resolver-info">
-
-            <div>
-
-                <p class="small-title">
-                    Logged in as
-                </p>
-
-                <h2 id="resolverName">
-                    Resolver
-                </h2>
-
-                <p>
-
-                    Resolver Type:
-
-                    <strong id="resolverTypeText">
-                        -
-                    </strong>
-
-                </p>
-
-                <p style="margin-top: 5px; font-size: 13px; color: #555;">
-
-                    <i class="fa-solid fa-envelope" style="margin-right: 6px; color: #163a63;"></i>
-
-                    <span id="resolverEmailText">
-                        -
-                    </span>
-
-                </p>
-
+            <div class="resolver-profile">
+                <div class="resolver-avatar">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+                <div>
+                    <span class="small-title">Logged in as Resolver</span>
+                    <h2 id="resolverName">Resolver Specialist</h2>
+                    <p class="category-tag">
+                        Assigned Category:
+                        <strong id="resolverTypeText">-</strong>
+                    </p>
+                    <span id="resolverEmailText" style="display:none;"></span>
+                </div>
             </div>
-
 
             <div class="authorized-badge">
-
                 <i class="fa-solid fa-circle-check"></i>
-
-                Authorized Resolver
-
+                <span>Authorized Resolver</span>
             </div>
-
         </div>
 
-
         <!-- ======================================
-            SUMMARY CARDS
+             SUMMARY KPI CARDS
         ======================================= -->
-
         <div class="summary-grid">
 
-
-            <!-- TOTAL COMPLAINTS -->
-
-            <div class="summary-card">
-
-                <i class="fa-solid fa-file-lines"></i>
-
-                <div>
-
-                    <h3 id="totalComplaints">
-                        0
-                    </h3>
-
-                    <p>
-                        Category Complaints
-                    </p>
-
+            <!-- TOTAL IN CATEGORY -->
+            <div class="summary-card category-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-layer-group"></i>
                 </div>
-
+                <div>
+                    <h3 id="totalComplaints">0</h3>
+                    <p>Category Assigned</p>
+                </div>
             </div>
 
-
-            <!-- PENDING COMPLAINTS -->
-
-            <div class="summary-card">
-
-                <i class="fa-solid fa-clock"></i>
-
-                <div>
-
-                    <h3 id="pendingComplaints">
-                        0
-                    </h3>
-
-                    <p>
-                        Pending
-                    </p>
-
+            <!-- PENDING ACTION -->
+            <div class="summary-card pending-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-clock"></i>
                 </div>
-
+                <div>
+                    <h3 id="pendingComplaints">0</h3>
+                    <p>Pending Action</p>
+                </div>
             </div>
 
-
-            <!-- COMPLETED COMPLAINTS -->
-
-            <div class="summary-card">
-
-                <i class="fa-solid fa-circle-check"></i>
-
-                <div>
-
-                    <h3 id="fixedComplaints">
-                        0
-                    </h3>
-
-                    <p>
-                        Completed
-                    </p>
-
+            <!-- COMPLETED / FIXED -->
+            <div class="summary-card completed-card">
+                <div class="summary-icon">
+                    <i class="fa-solid fa-circle-check"></i>
                 </div>
-
+                <div>
+                    <h3 id="fixedComplaints">0</h3>
+                    <p>Resolved & Closed</p>
+                </div>
             </div>
-
 
         </div>
 
-
         <!-- ======================================
-            COMPLAINT SECTION
+             COMPLAINT SECTION
         ======================================= -->
-
         <section class="complaint-section">
 
-
             <!-- SECTION HEADER -->
-
             <div class="section-header">
-
                 <div>
-
-                    <h2>
-                        Complaints for Your Category
-                    </h2>
-
-                    <p>
-                        Click on a complaint to view the complete details and update its status.
-                    </p>
-
+                    <h2>Category Work Tickets</h2>
+                    <p>Click any complaint to view full details and update the resolution status.</p>
                 </div>
 
-
                 <!-- SEARCH -->
-
-                <input
-                    type="text"
-                    id="searchComplaint"
-                    placeholder="Search complaint..."
-                    autocomplete="off">
-
+                <div class="search-wrap">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input
+                        type="text"
+                        id="searchComplaint"
+                        placeholder="Search Tracking ID, location, or subject..."
+                        autocomplete="off">
+                </div>
             </div>
 
-
-            <!-- ==================================
-                COMPLAINTS
-
-                Complaint cards/details are
-                automatically generated by
-                Resolver_dashboard.js.
-
-                Priority is removed in JS.
-
-                Department is displayed in its
-                place using the department value
-                stored in Firebase.
-            =================================== -->
-
+            <!-- COMPLAINT LIST (DYNAMICALLY RENDERED BY Resolver_dashboard.js) -->
             <div
                 id="complaintContainer"
                 class="complaint-container">
 
                 <div class="loading-box">
-
                     <i class="fa-solid fa-spinner fa-spin"></i>
-
-                    Loading complaints...
-
+                    <span>Loading category complaints...</span>
                 </div>
 
             </div>
 
-
         </section>
-
 
     </main>
 
-
     <!-- ==========================================
-        FOOTER
-    ========================================== -->
-
-    <footer>
-
-        © 2026 AI-Based Smart Complaint Management System |
-        SKN Sinhgad College of Engineering, Pandharpur
-
+         FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2026 AI-Based Smart Complaint Management System | SKN Sinhgad College of Engineering, Pandharpur</p>
+            <div class="footer-note">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Operational Maintenance Desk
+            </div>
+        </div>
     </footer>
 
-    
-    <!-- ==========================================
-        JAVASCRIPT
-    ========================================== -->
-
+    <!-- Firebase / Resolver Dashboard Script -->
     <script
         type="module"
         src="Resolver_dashboard.js?v=2.1">
     </script>
 
+</body>
 
-    </body>
-
-    </html>
+</html>
