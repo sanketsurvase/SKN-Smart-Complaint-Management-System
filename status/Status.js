@@ -151,6 +151,27 @@ document.addEventListener(
             }
         );
 
+
+        // =================================================
+        // AUTO-CHECK IF ID PASSED VIA URL OR SESSION STORAGE
+        // =================================================
+        try {
+            const urlParams =
+                new URLSearchParams(window.location.search);
+
+            const passedId =
+                urlParams.get("id") ||
+                sessionStorage.getItem("pendingTrackId");
+
+            if (passedId && passedId.trim() !== "") {
+                trackingId.value = passedId.trim();
+                sessionStorage.removeItem("pendingTrackId");
+                checkComplaintStatus();
+            }
+        } catch (e) {
+            console.warn("Auto-check error:", e);
+        }
+
     }
 );
 

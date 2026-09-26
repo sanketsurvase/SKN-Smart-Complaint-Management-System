@@ -76,6 +76,25 @@ const database =
 
 
 // =====================================================
+// DATABASE CONNECTIVITY MONITOR
+// =====================================================
+
+const connectedRef =
+    ref(database, ".info/connected");
+
+onValue(
+    connectedRef,
+    function (snapshot) {
+        if (snapshot.val() === true) {
+            console.log("Firebase Realtime Database: Connected successfully.");
+        } else {
+            console.warn("Firebase Realtime Database: Disconnected / Retrying...");
+        }
+    }
+);
+
+
+// =====================================================
 // LOGIN PAGE
 // =====================================================
 
@@ -95,6 +114,11 @@ const resolverName =
 const resolverTypeText =
     document.getElementById(
         "resolverTypeText"
+    );
+
+const resolverEmailText =
+    document.getElementById(
+        "resolverEmailText"
     );
 
 const complaintContainer =
@@ -142,6 +166,11 @@ let currentResolverName =
         "resolverName"
     ) || "";
 
+let currentResolverEmail =
+    localStorage.getItem(
+        "resolverEmail"
+    ) || "";
+
 let currentResolverUID =
     localStorage.getItem(
         "resolverUID"
@@ -177,6 +206,16 @@ if (
 
     resolverTypeText.textContent =
         currentResolverType;
+}
+
+
+if (
+    resolverEmailText &&
+    currentResolverEmail
+) {
+
+    resolverEmailText.textContent =
+        currentResolverEmail;
 }
 
 
@@ -240,24 +279,57 @@ onAuthStateChanged(
         try {
 
             // =================================================
-            // READ RESOLVER PROFILE
+            // READ RESOLVER PROFILE (resolverUsers/<uid>)
             // =================================================
 
-            const resolverSnapshot =
-                await get(
-                    ref(
-                        database,
-                        "resolverUsers/" +
-                        user.uid
-                    )
+            const resolverRef = ref(
+                database,
+                "resolverUsers/" + user.uid
+            );
+
+            let snapshot = await get(resolverRef);
+            let resolverData = null;
+
+            if (snapshot.exists()) {
+                resolverData = cleanObjectKeys(snapshot.val());
+            } else if (user.email) {
+                // Fallback: Check resolverUsers by email if Auth UID differs from database key
+                console.warn(
+                    "Resolver UID not found directly in resolverUsers. Checking by email:",
+                    user.email
                 );
 
+                const emailQuery = query(
+                    ref(database, "resolverUsers"),
+                    orderByChild("email"),
+                    equalTo(user.email.toLowerCase())
+                );
 
-            if (
-                !resolverSnapshot.exists()
-            ) {
+                const emailSnapshot = await get(emailQuery);
+
+                if (emailSnapshot.exists()) {
+                    emailSnapshot.forEach(function (child) {
+                        resolverData = cleanObjectKeys(child.val());
+                        currentResolverUID = child.key;
+                    });
+                }
+            }
+
+            if (!resolverData) {
+                console.error(
+                    "Resolver profile not found for UID:",
+                    user.uid,
+                    "or email:",
+                    user.email
+                );
+
+                alert(
+                    "Resolver profile not found in database for this account."
+                );
 
                 clearResolverCache();
+
+                await signOut(auth);
 
                 window.location.replace(
                     LOGIN_PAGE
@@ -265,23 +337,48 @@ onAuthStateChanged(
 
                 return;
             }
-
-
-            const resolver =
-                resolverSnapshot.val();
-
 
             // =================================================
             // ROLE CHECK
             // =================================================
 
-            if (
-                normalizeValue(
-                    resolver.role
-                ) !== "resolver"
-            ) {
+            const rawRole =
+                resolverData.role ||
+                resolverData.Role ||
+                resolverData.userRole ||
+                resolverData.resolverRole ||
+                "";
+
+            const role =
+                normalizeValue(rawRole);
+
+            const resolverType =
+                String(
+                    resolverData.resolverType ||
+                    resolverData.ResolverType ||
+                    ""
+                ).trim();
+
+            const isAuthorizedResolver = (
+                role === "resolver" ||
+                role.includes("resolver") ||
+                (resolverType !== "" && role === normalizeValue(resolverType)) ||
+                resolverType !== ""
+            );
+
+            if (!isAuthorizedResolver) {
+                console.error(
+                    "Account is not registered as a Resolver:",
+                    rawRole
+                );
+
+                alert(
+                    "Access denied. Resolver authorization required."
+                );
 
                 clearResolverCache();
+
+                await signOut(auth);
 
                 window.location.replace(
                     LOGIN_PAGE
@@ -290,39 +387,45 @@ onAuthStateChanged(
                 return;
             }
 
-
             // =================================================
             // TYPE CHECK
             // =================================================
 
-            if (
-                !resolver.resolverType ||
-                resolver.resolverType
-                    .trim() === ""
-            ) {
-
+            if (resolverType === "") {
                 console.error(
-                    "Resolver Type not found."
+                    "Resolver Type is not configured."
+                );
+
+                alert(
+                    "Resolver category/type is not configured for your account."
                 );
 
                 return;
             }
 
-
             const previousResolverType =
                 currentResolverType;
-
 
             currentResolverUID =
                 user.uid;
 
             currentResolverName =
-                resolver.name ||
-                "Resolver";
+                (
+                    resolverData.name ||
+                    resolverData.resolverName ||
+                    resolverData.displayName ||
+                    "Resolver"
+                ).trim();
 
             currentResolverType =
-                resolver.resolverType
-                    .trim();
+                resolverData.resolverType.trim();
+
+            currentResolverEmail =
+                (
+                    resolverData.email ||
+                    user.email ||
+                    ""
+                ).trim();
 
 
             // =================================================
@@ -340,6 +443,16 @@ onAuthStateChanged(
 
                 resolverTypeText.textContent =
                     currentResolverType;
+            }
+
+
+            if (
+                resolverEmailText &&
+                currentResolverEmail
+            ) {
+
+                resolverEmailText.textContent =
+                    currentResolverEmail;
             }
 
 
@@ -362,15 +475,19 @@ onAuthStateChanged(
                 currentResolverType
             );
 
-
-            console.log(
-                "Logged Resolver:",
-                currentResolverName
+            localStorage.setItem(
+                "resolverEmail",
+                currentResolverEmail
             );
 
+
             console.log(
-                "Resolver Type:",
-                currentResolverType
+                "Authenticated Resolver:",
+                currentResolverName,
+                "| Type:",
+                currentResolverType,
+                "| Email:",
+                currentResolverEmail
             );
 
 
@@ -435,7 +552,7 @@ onAuthStateChanged(
 
                         <br><br>
 
-                        Please check your internet connection.
+                        Please check your internet and database connection.
 
                     </div>
 
@@ -465,30 +582,30 @@ function loadComplaints() {
     }
 
 
+    if (
+        typeof stopComplaintListener ===
+        "function"
+    ) {
+
+        stopComplaintListener();
+    }
+
+
     // =================================================
-    // CATEGORY → RESOLVER
+    // COMPLAINTS REF (REAL-TIME LISTENER)
+    // Matches category, assignedResolverType, or assignedResolverUID
     // =================================================
 
-    const complaintsQuery =
-        query(
-            ref(
-                database,
-                "complaints"
-            ),
-
-            orderByChild(
-                "category"
-            ),
-
-            equalTo(
-                currentResolverType
-            )
+    const complaintsRef =
+        ref(
+            database,
+            "complaints"
         );
 
 
     stopComplaintListener =
         onValue(
-            complaintsQuery,
+            complaintsRef,
 
             function (snapshot) {
 
@@ -508,21 +625,56 @@ function loadComplaints() {
                 }
 
 
+                const targetType =
+                    normalizeValue(
+                        currentResolverType
+                    );
+
+
                 snapshot.forEach(
                     function (
                         childSnapshot
                     ) {
 
-                        resolverComplaintList.push(
-                            {
+                        const complaint =
+                            cleanObjectKeys(
+                                childSnapshot.val()
+                            );
 
-                                firebaseKey:
-                                    childSnapshot.key,
+                        const complaintCategory =
+                            normalizeValue(
+                                complaint.category
+                            );
 
-                                ...childSnapshot.val()
+                        const assignedType =
+                            normalizeValue(
+                                complaint.assignedResolverType
+                            );
 
-                            }
-                        );
+                        const assignedUID =
+                            complaint.assignedResolverUID ||
+                            "";
+
+
+                        // Match category, assignedResolverType, or assigned UID
+                        if (
+                            complaintCategory === targetType ||
+                            assignedType === targetType ||
+                            (assignedUID && assignedUID === currentResolverUID)
+                        ) {
+
+                            resolverComplaintList.push(
+                                {
+
+                                    firebaseKey:
+                                        childSnapshot.key,
+
+                                    ...complaint
+
+                                }
+                            );
+                        }
+
                     }
                 );
 
@@ -578,7 +730,7 @@ function loadComplaints() {
 
                             ${escapeHTML(
                                 error.message ||
-                                "Firebase query failed."
+                                "Database query failed."
                             )}
 
                         </div>
@@ -1243,21 +1395,40 @@ async function updateComplaintStatus(
 
 
         const complaint =
-            snapshot.val();
+            cleanObjectKeys(
+                snapshot.val()
+            );
 
 
         // =================================================
         // SECURITY CHECK
         // =================================================
 
-        if (
-            normalizeValue(
-                complaint.category
-            )
-            !==
+        const targetType =
             normalizeValue(
                 currentResolverType
-            )
+            );
+
+        const matchesCategory =
+            normalizeValue(
+                complaint.category
+            ) === targetType;
+
+        const matchesResolverUID =
+            Boolean(
+                complaint.assignedResolverUID &&
+                complaint.assignedResolverUID === currentResolverUID
+            );
+
+        const matchesResolverType =
+            normalizeValue(
+                complaint.assignedResolverType
+            ) === targetType;
+
+        if (
+            !matchesCategory &&
+            !matchesResolverUID &&
+            !matchesResolverType
         ) {
 
             throw new Error(
@@ -1293,7 +1464,10 @@ async function updateComplaintStatus(
                     currentResolverName,
 
                 assignedResolverUID:
-                    currentResolverUID
+                    currentResolverUID,
+
+                assignedResolverType:
+                    currentResolverType
 
             }
         );
@@ -1665,6 +1839,10 @@ function clearResolverCache() {
     localStorage.removeItem(
         "resolverType"
     );
+
+    localStorage.removeItem(
+        "resolverEmail"
+    );
 }
 
 
@@ -1681,6 +1859,28 @@ function normalizeValue(
     )
     .trim()
     .toLowerCase();
+}
+
+
+// =====================================================
+// CLEAN OBJECT KEYS (TRIM SPACES FROM KEYS & VALUES)
+// =====================================================
+
+function cleanObjectKeys(rawObj) {
+
+    if (!rawObj || typeof rawObj !== "object") {
+        return {};
+    }
+
+    const cleaned = {};
+
+    for (const [key, value] of Object.entries(rawObj)) {
+        const cleanKey = key.trim();
+        cleaned[cleanKey] = (typeof value === "string") ? value.trim() : value;
+    }
+
+    return cleaned;
+
 }
 
 

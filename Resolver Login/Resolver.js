@@ -11,7 +11,6 @@
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-
 import {
     getAuth,
     signInWithEmailAndPassword,
@@ -22,14 +21,10 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-
 import {
     getDatabase,
     ref,
-    get,
-    query,
-    orderByChild,
-    equalTo
+    get
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
@@ -67,16 +62,11 @@ const firebaseConfig = {
 // INITIALIZE FIREBASE
 // =====================================================
 
-const app =
-    initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
+const auth = getAuth(app);
 
-const auth =
-    getAuth(app);
-
-
-const database =
-    getDatabase(app);
+const database = getDatabase(app);
 
 
 // =====================================================
@@ -92,60 +82,98 @@ const DASHBOARD_PAGE =
 // =====================================================
 
 const loginForm =
-    document.getElementById(
-        "loginForm"
-    );
-
+    document.getElementById("loginForm");
 
 const loginEmail =
-    document.getElementById(
-        "loginEmail"
-    );
-
+    document.getElementById("loginEmail");
 
 const loginPassword =
-    document.getElementById(
-        "loginPassword"
-    );
-
+    document.getElementById("loginPassword");
 
 const loginMessage =
-    document.getElementById(
-        "loginMessage"
-    );
-
+    document.getElementById("loginMessage");
 
 const loginButton =
-    document.getElementById(
-        "loginButton"
-    );
-
+    document.getElementById("loginButton");
 
 const toggleLoginPassword =
-    document.getElementById(
-        "toggleLoginPassword"
-    );
-
+    document.getElementById("toggleLoginPassword");
 
 const forgotPassword =
-    document.getElementById(
-        "forgotPassword"
-    );
+    document.getElementById("forgotPassword");
 
 
 // =====================================================
 // NORMALIZE VALUE
 // =====================================================
 
-function normalizeValue(
-    value
-) {
+function normalizeValue(value) {
 
-    return String(
-        value || ""
-    )
-    .trim()
-    .toLowerCase();
+    return String(value || "")
+        .trim()
+        .toLowerCase();
+
+}
+
+
+// =====================================================
+// CLEAN OBJECT KEYS (TRIM SPACES FROM KEYS & VALUES)
+// =====================================================
+
+function cleanObjectKeys(rawObj) {
+
+    if (!rawObj || typeof rawObj !== "object") {
+        return {};
+    }
+
+    const cleaned = {};
+
+    for (const [key, value] of Object.entries(rawObj)) {
+        const cleanKey = key.trim();
+        cleaned[cleanKey] = (typeof value === "string") ? value.trim() : value;
+    }
+
+    return cleaned;
+
+}
+
+
+// =====================================================
+// SHOW ERROR
+// =====================================================
+
+function showLoginError(message) {
+
+    loginMessage.className = "message error";
+
+    loginMessage.textContent = message;
+
+}
+
+
+// =====================================================
+// SHOW SUCCESS
+// =====================================================
+
+function showLoginSuccess(message) {
+
+    loginMessage.className = "message success";
+
+    loginMessage.textContent = message;
+
+}
+
+
+// =====================================================
+// CLEAR RESOLVER DATA
+// =====================================================
+
+function clearResolverCache() {
+
+    localStorage.removeItem("resolverUID");
+    localStorage.removeItem("resolverName");
+    localStorage.removeItem("resolverType");
+    localStorage.removeItem("resolverEmail");
 
 }
 
@@ -154,23 +182,15 @@ function normalizeValue(
 // SHOW / HIDE PASSWORD
 // =====================================================
 
-if (
-    toggleLoginPassword
-) {
+if (toggleLoginPassword) {
 
     toggleLoginPassword.addEventListener(
         "click",
-
         function () {
 
-            if (
-                loginPassword.type ===
-                "password"
-            ) {
+            if (loginPassword.type === "password") {
 
-                loginPassword.type =
-                    "text";
-
+                loginPassword.type = "text";
 
                 toggleLoginPassword.innerHTML =
                     '<i class="fa-solid fa-eye-slash"></i>';
@@ -179,342 +199,10 @@ if (
 
             else {
 
-                loginPassword.type =
-                    "password";
-
+                loginPassword.type = "password";
 
                 toggleLoginPassword.innerHTML =
                     '<i class="fa-solid fa-eye"></i>';
-
-            }
-
-        }
-    );
-
-}
-
-
-// =====================================================
-// FORGOT PASSWORD
-// =====================================================
-
-if (
-    forgotPassword
-) {
-
-    forgotPassword.addEventListener(
-        "click",
-
-        async function (event) {
-
-            event.preventDefault();
-
-
-            // =================================================
-            // GET EMAIL
-            // =================================================
-
-            const email =
-                loginEmail.value
-                    .trim()
-                    .toLowerCase();
-
-
-            // =================================================
-            // CLEAR OLD MESSAGE
-            // =================================================
-
-            loginMessage.className =
-                "message";
-
-            loginMessage.textContent =
-                "";
-
-
-            // =================================================
-            // EMPTY EMAIL CHECK
-            // =================================================
-
-            if (
-                email === ""
-            ) {
-
-                loginMessage.className =
-                    "message error";
-
-
-                loginMessage.textContent =
-                    "Please enter your registered Resolver email first.";
-
-
-                loginEmail.focus();
-
-
-                return;
-
-            }
-
-
-            // =================================================
-            // OFFICIAL EMAIL CHECK
-            // =================================================
-
-            if (
-                !email.endsWith(
-                    "@sknscoe.ac.in"
-                )
-            ) {
-
-                loginMessage.className =
-                    "message error";
-
-
-                loginMessage.textContent =
-                    "Please enter your official @sknscoe.ac.in Resolver email.";
-
-
-                loginEmail.focus();
-
-
-                return;
-
-            }
-
-
-            // =================================================
-            // START CHECKING
-            // =================================================
-
-            forgotPassword.style.pointerEvents =
-                "none";
-
-
-            forgotPassword.style.opacity =
-                "0.6";
-
-
-            forgotPassword.innerHTML =
-                '<i class="fa-solid fa-spinner fa-spin"></i> Checking...';
-
-
-            try {
-
-                // =================================================
-                // CHECK EMAIL IN resolverUsers
-                // =================================================
-
-                const resolverEmailQuery =
-                    query(
-
-                        ref(
-                            database,
-                            "resolverUsers"
-                        ),
-
-                        orderByChild(
-                            "email"
-                        ),
-
-                        equalTo(
-                            email
-                        )
-
-                    );
-
-
-                const emailSnapshot =
-                    await get(
-                        resolverEmailQuery
-                    );
-
-
-                // =================================================
-                // EMAIL NOT FOUND
-                // =================================================
-
-                if (
-                    !emailSnapshot.exists()
-                ) {
-
-                    loginMessage.className =
-                        "message error";
-
-
-                    loginMessage.textContent =
-                        "This Resolver email is not registered in the database.";
-
-
-                    return;
-
-                }
-
-
-                // =================================================
-                // CHECK RESOLVER ROLE
-                // =================================================
-
-                let validResolver =
-                    false;
-
-
-                emailSnapshot.forEach(
-                    function (childSnapshot) {
-
-                        const resolverData =
-                            childSnapshot.val();
-
-
-                        if (
-                            normalizeValue(
-                                resolverData.role
-                            ) === "resolver"
-                        ) {
-
-                            validResolver =
-                                true;
-
-                        }
-
-                    }
-                );
-
-
-                // =================================================
-                // NOT A RESOLVER
-                // =================================================
-
-                if (
-                    !validResolver
-                ) {
-
-                    loginMessage.className =
-                        "message error";
-
-
-                    loginMessage.textContent =
-                        "This email is not registered as a Resolver.";
-
-
-                    return;
-
-                }
-
-
-                // =================================================
-                // SEND RESET EMAIL
-                // =================================================
-
-                forgotPassword.innerHTML =
-                    '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-
-
-                await sendPasswordResetEmail(
-                    auth,
-                    email
-                );
-
-
-                // =================================================
-                // SUCCESS
-                // =================================================
-
-                loginMessage.className =
-                    "message success";
-
-
-                loginMessage.textContent =
-                    "Password reset link has been sent to your registered email. Please check your inbox.";
-
-            }
-
-
-            catch (error) {
-
-                console.error(
-                    "Resolver Password Reset Error:",
-                    error
-                );
-
-
-                loginMessage.className =
-                    "message error";
-
-
-                // =================================================
-                // INVALID EMAIL
-                // =================================================
-
-                if (
-                    error.code ===
-                    "auth/invalid-email"
-                ) {
-
-                    loginMessage.textContent =
-                        "Please enter a valid email address.";
-
-                }
-
-
-                // =================================================
-                // TOO MANY REQUESTS
-                // =================================================
-
-                else if (
-                    error.code ===
-                    "auth/too-many-requests"
-                ) {
-
-                    loginMessage.textContent =
-                        "Too many password reset attempts. Please try again later.";
-
-                }
-
-
-                // =================================================
-                // NETWORK ERROR
-                // =================================================
-
-                else if (
-                    error.code ===
-                    "auth/network-request-failed"
-                ) {
-
-                    loginMessage.textContent =
-                        "Network error. Please check your internet connection.";
-
-                }
-
-
-                // =================================================
-                // OTHER ERROR
-                // =================================================
-
-                else {
-
-                    loginMessage.textContent =
-                        "Unable to check the Resolver email or send the password reset email.";
-
-                }
-
-            }
-
-
-            finally {
-
-                // =================================================
-                // RESTORE FORGOT PASSWORD LINK
-                // =================================================
-
-                forgotPassword.style.pointerEvents =
-                    "auto";
-
-
-                forgotPassword.style.opacity =
-                    "1";
-
-
-                forgotPassword.innerHTML =
-                    '<i class="fa-solid fa-key"></i> Forgot Password?';
 
             }
 
@@ -530,41 +218,32 @@ if (
 
 loginForm.addEventListener(
     "submit",
-
     async function (event) {
 
         event.preventDefault();
 
 
-        // =================================================
-        // GET LOGIN VALUES
-        // =================================================
+        // ---------------------------------------------
+        // GET EMAIL AND PASSWORD
+        // ---------------------------------------------
 
         const email =
             loginEmail.value
                 .trim()
                 .toLowerCase();
 
-
         const password =
             loginPassword.value;
 
 
-        // =================================================
-        // CLEAR OLD MESSAGE
-        // =================================================
+        loginMessage.className = "message";
 
-        loginMessage.className =
-            "message";
+        loginMessage.textContent = "";
 
 
-        loginMessage.textContent =
-            "";
-
-
-        // =================================================
+        // ---------------------------------------------
         // EMPTY CHECK
-        // =================================================
+        // ---------------------------------------------
 
         if (
             email === "" ||
@@ -575,39 +254,31 @@ loginForm.addEventListener(
                 "Please enter email and password."
             );
 
-
             return;
-
         }
 
 
-        // =================================================
-        // OFFICIAL EMAIL CHECK
-        // =================================================
+        // ---------------------------------------------
+        // COLLEGE EMAIL CHECK
+        // ---------------------------------------------
 
         if (
-            !email.endsWith(
-                "@sknscoe.ac.in"
-            )
+            !email.endsWith("@sknscoe.ac.in")
         ) {
 
             showLoginError(
                 "Only official @sknscoe.ac.in Resolver accounts are allowed."
             );
 
-
             return;
-
         }
 
 
-        // =================================================
-        // DISABLE LOGIN BUTTON
-        // =================================================
+        // ---------------------------------------------
+        // DISABLE BUTTON
+        // ---------------------------------------------
 
-        loginButton.disabled =
-            true;
-
+        loginButton.disabled = true;
 
         loginButton.innerHTML =
             '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
@@ -615,9 +286,9 @@ loginForm.addEventListener(
 
         try {
 
-            // =================================================
-            // KEEP LOGIN UNTIL LOGOUT
-            // =================================================
+            // =========================================
+            // LOGIN PERSISTENCE
+            // =========================================
 
             await setPersistence(
                 auth,
@@ -625,9 +296,9 @@ loginForm.addEventListener(
             );
 
 
-            // =================================================
-            // FIREBASE AUTH LOGIN
-            // =================================================
+            // =========================================
+            // FIREBASE AUTHENTICATION
+            // =========================================
 
             const userCredential =
                 await signInWithEmailAndPassword(
@@ -642,141 +313,202 @@ loginForm.addEventListener(
 
 
             console.log(
-                "Resolver authentication successful:",
+                "Authentication successful."
+            );
+
+            console.log(
+                "UID:",
                 user.uid
             );
 
 
-            // =================================================
-            // READ RESOLVER PROFILE
-            // =================================================
+            // =========================================
+            // GET RESOLVER PROFILE
+            // =========================================
 
-            const resolverSnapshot =
+            const resolverReference =
+                ref(
+                    database,
+                    "resolverUsers/" + user.uid
+                );
+
+
+            const snapshot =
                 await get(
-                    ref(
-                        database,
-                        "resolverUsers/" +
-                        user.uid
-                    )
+                    resolverReference
                 );
 
 
-            // =================================================
-            // PROFILE REQUIRED
-            // =================================================
+            // =========================================
+            // PROFILE DOES NOT EXIST
+            // =========================================
 
-            if (
-                !resolverSnapshot.exists()
-            ) {
+            if (!snapshot.exists()) {
 
-                await signOut(
-                    auth
+                console.error(
+                    "Resolver profile not found."
                 );
 
+                await signOut(auth);
 
                 clearResolverCache();
-
 
                 showLoginError(
                     "Resolver profile not found."
                 );
 
-
                 return;
-
             }
 
 
-            const resolver =
-                resolverSnapshot.val();
+            // =========================================
+            // GET RESOLVER DATA
+            // =========================================
 
+            const rawData =
+                snapshot.val();
 
-            // =================================================
-            // ROLE CHECK
-            // =================================================
-
-            if (
-                normalizeValue(
-                    resolver.role
-                ) !== "resolver"
-            ) {
-
-                await signOut(
-                    auth
+            const resolverData =
+                cleanObjectKeys(
+                    rawData
                 );
 
 
-                clearResolverCache();
+            console.log(
+                "Resolver Raw Data:",
+                rawData
+            );
 
+            console.log(
+                "Cleaned Resolver Data:",
+                resolverData
+            );
+
+
+            console.log(
+                "Resolver Role:",
+                resolverData.role
+            );
+
+
+            console.log(
+                "Resolver Type:",
+                resolverData.resolverType
+            );
+
+
+            // =========================================
+            // CHECK ROLE
+            // =========================================
+
+            const rawRole =
+                resolverData.role ||
+                resolverData.Role ||
+                resolverData.userRole ||
+                resolverData.resolverRole ||
+                "";
+
+            const role =
+                normalizeValue(
+                    rawRole
+                );
+
+            const resolverType =
+                String(
+                    resolverData.resolverType ||
+                    resolverData.ResolverType ||
+                    ""
+                ).trim();
+
+            const isAuthorizedResolver = (
+                role === "resolver" ||
+                role.includes("resolver") ||
+                (resolverType !== "" && role === normalizeValue(resolverType)) ||
+                resolverType !== ""
+            );
+
+            if (!isAuthorizedResolver) {
+
+                console.error(
+                    "Invalid Resolver role:",
+                    rawRole,
+                    "Resolver Data:",
+                    resolverData
+                );
+
+                await signOut(auth);
+
+                clearResolverCache();
 
                 showLoginError(
                     "Access denied. Resolver authorization required."
                 );
 
-
                 return;
-
             }
 
 
-            // =================================================
-            // RESOLVER TYPE CHECK
-            // =================================================
+            // =========================================
+            // CHECK RESOLVER TYPE
+            // =========================================
 
-            if (
-                !resolver.resolverType ||
-                resolver.resolverType
-                    .trim() === ""
-            ) {
+            if (resolverType === "") {
 
-                await signOut(
-                    auth
-                );
-
+                await signOut(auth);
 
                 clearResolverCache();
 
-
                 showLoginError(
-                    "Resolver Type is not configured."
+                    "Resolver Type is not configured in database."
                 );
 
-
                 return;
-
             }
 
 
-            // =================================================
-            // RESOLVER NAME CHECK
-            // =================================================
+            // =========================================
+            // CHECK NAME
+            // =========================================
 
-            if (
-                !resolver.name ||
-                resolver.name.trim() === ""
-            ) {
+            const resolverName =
+                String(
+                    resolverData.name ||
+                    resolverData.resolverName ||
+                    resolverData.displayName ||
+                    "Resolver"
+                ).trim();
 
-                await signOut(
-                    auth
+
+            // =========================================
+            // OPTIONAL EMAIL VERIFICATION
+            // =========================================
+
+            const databaseEmail =
+                normalizeValue(
+                    resolverData.email
                 );
 
+
+            if (
+                databaseEmail &&
+                databaseEmail !== email
+            ) {
+
+                await signOut(auth);
 
                 clearResolverCache();
 
-
                 showLoginError(
-                    "Resolver name is not configured."
+                    "Resolver email does not match the registered account."
                 );
 
-
                 return;
-
             }
 
 
-            // =================================================
-            // CACHE RESOLVER DETAILS
-            // =================================================
+            // =========================================
+            // SAVE RESOLVER INFORMATION
+            // =========================================
 
             localStorage.setItem(
                 "resolverUID",
@@ -786,57 +518,55 @@ loginForm.addEventListener(
 
             localStorage.setItem(
                 "resolverName",
-                resolver.name
+                resolverName
             );
 
 
             localStorage.setItem(
                 "resolverType",
-                resolver.resolverType
+                resolverType
             );
 
 
             localStorage.setItem(
                 "resolverEmail",
-                resolver.email ||
-                email
+                resolverData.email || email
             );
 
 
-            // =================================================
+            // =========================================
             // LOGIN SUCCESS
-            // =================================================
+            // =========================================
 
-            loginMessage.textContent =
-                "Login successful. Opening Resolver Dashboard...";
-
-
-            loginMessage.classList.add(
-                "success"
+            console.log(
+                "Resolver Authorized Successfully"
             );
 
 
-            // =================================================
+            showLoginSuccess(
+                "Login successful. Opening Resolver Dashboard..."
+            );
+
+
+            // =========================================
             // REDIRECT
-            // =================================================
+            // =========================================
 
             setTimeout(
                 function () {
 
-                    window.location.replace(
-                        DASHBOARD_PAGE
-                    );
+                    window.location.href =
+                        DASHBOARD_PAGE;
 
                 },
-
-                200
+                500
             );
 
         }
 
 
         // =================================================
-        // LOGIN ERROR
+        // ERRORS
         // =================================================
 
         catch (error) {
@@ -889,7 +619,7 @@ loginForm.addEventListener(
             ) {
 
                 showLoginError(
-                    "Too many login attempts. Try again later."
+                    "Too many login attempts. Please try again later."
                 );
 
             }
@@ -902,6 +632,20 @@ loginForm.addEventListener(
 
                 showLoginError(
                     "Network error. Check your internet connection."
+                );
+
+            }
+
+
+            else if (
+                error.code ===
+                "PERMISSION_DENIED" ||
+                String(error.message)
+                    .includes("PERMISSION_DENIED")
+            ) {
+
+                showLoginError(
+                    "Database permission denied. Check Firebase Database Rules."
                 );
 
             }
@@ -923,14 +667,12 @@ loginForm.addEventListener(
 
 
         // =================================================
-        // ENABLE LOGIN BUTTON
+        // ENABLE BUTTON
         // =================================================
 
         finally {
 
-            loginButton.disabled =
-                false;
-
+            loginButton.disabled = false;
 
             loginButton.innerHTML =
                 '<i class="fa-solid fa-right-to-bracket"></i> Login';
@@ -942,46 +684,103 @@ loginForm.addEventListener(
 
 
 // =====================================================
-// SHOW LOGIN ERROR
+// FORGOT PASSWORD
 // =====================================================
 
-function showLoginError(
-    message
-) {
+if (forgotPassword) {
 
-    loginMessage.className =
-        "message error";
+    forgotPassword.addEventListener(
+        "click",
+        async function (event) {
 
-
-    loginMessage.textContent =
-        message;
-
-}
+            event.preventDefault();
 
 
-// =====================================================
-// CLEAR RESOLVER CACHE
-// =====================================================
-
-function clearResolverCache() {
-
-    localStorage.removeItem(
-        "resolverUID"
-    );
+            const email =
+                loginEmail.value
+                    .trim()
+                    .toLowerCase();
 
 
-    localStorage.removeItem(
-        "resolverName"
-    );
+            if (email === "") {
+
+                showLoginError(
+                    "Please enter your Resolver email first."
+                );
+
+                loginEmail.focus();
+
+                return;
+            }
 
 
-    localStorage.removeItem(
-        "resolverType"
-    );
+            if (
+                !email.endsWith("@sknscoe.ac.in")
+            ) {
+
+                showLoginError(
+                    "Please enter a valid @sknscoe.ac.in email."
+                );
+
+                return;
+            }
 
 
-    localStorage.removeItem(
-        "resolverEmail"
+            try {
+
+                await sendPasswordResetEmail(
+                    auth,
+                    email
+                );
+
+
+                showLoginSuccess(
+                    "Password reset link has been sent to your email."
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Password Reset Error:",
+                    error
+                );
+
+
+                if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    showLoginError(
+                        "Invalid email address."
+                    );
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/too-many-requests"
+                ) {
+
+                    showLoginError(
+                        "Too many requests. Try again later."
+                    );
+
+                }
+
+                else {
+
+                    showLoginError(
+                        "Unable to send password reset email."
+                    );
+
+                }
+
+            }
+
+        }
     );
 
 }
